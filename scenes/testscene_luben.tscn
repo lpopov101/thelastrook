@@ -1,3 +1,86 @@
-[gd_scene format=3 uid="uid://bcbrmgumytywx"]
+[gd_scene load_steps=8 format=3 uid="uid://bcbrmgumytywx"]
 
-[node name="TestsceneLuben" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://ban0lwcifpecn" path="res://assets/chess_board.png" id="1_6dpy0"]
+[ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="2_b2msw"]
+[ext_resource type="Script" uid="uid://u6wu22emp1j7" path="res://src/Rook.cs" id="2_rgtc0"]
+[ext_resource type="Script" uid="uid://d2g8r25eedkb7" path="res://src/InputManager.cs" id="4_rgtc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dpy0"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnpa"]
+size = Vector2(805, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ttf0"]
+size = Vector2(20, 805)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Board" type="Node" parent="."]
+
+[node name="ChessBoard" type="Sprite2D" parent="Board"]
+position = Vector2(-201, -200)
+scale = Vector2(0.335, 0.333)
+texture = ExtResource("1_6dpy0")
+
+[node name="ChessBoard2" type="Sprite2D" parent="Board"]
+position = Vector2(201, -200)
+scale = Vector2(0.335, 0.333)
+texture = ExtResource("1_6dpy0")
+
+[node name="ChessBoard3" type="Sprite2D" parent="Board"]
+position = Vector2(-201, 200)
+scale = Vector2(0.335, 0.333)
+texture = ExtResource("1_6dpy0")
+
+[node name="ChessBoard4" type="Sprite2D" parent="Board"]
+position = Vector2(201, 200)
+scale = Vector2(0.335, 0.333)
+texture = ExtResource("1_6dpy0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 2
+zoom = Vector2(0.45, 0.45)
+
+[node name="Rook" type="CharacterBody2D" parent="."]
+position = Vector2(-25, -25)
+motion_mode = 1
+script = ExtResource("2_rgtc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rook"]
+shape = SubResource("RectangleShape2D_6dpy0")
+
+[node name="Sprite" type="Sprite2D" parent="Rook"]
+z_index = 1
+position = Vector2(7.15256e-07, -2)
+scale = Vector2(1.275, 1.25)
+texture = ExtResource("2_b2msw")
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Upper" type="StaticBody2D" parent="Bounds"]
+position = Vector2(0, -410)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Upper"]
+shape = SubResource("RectangleShape2D_tjnpa")
+
+[node name="Lower" type="StaticBody2D" parent="Bounds"]
+position = Vector2(0, 410)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Lower"]
+shape = SubResource("RectangleShape2D_tjnpa")
+
+[node name="Right" type="StaticBody2D" parent="Bounds"]
+position = Vector2(412, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Right"]
+shape = SubResource("RectangleShape2D_3ttf0")
+
+[node name="Left" type="StaticBody2D" parent="Bounds"]
+position = Vector2(-412, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Left"]
+shape = SubResource("RectangleShape2D_3ttf0")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_rgtc0")

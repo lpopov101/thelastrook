@@ -1,6 +1,9 @@
 class_name GameManager
 extends Node
 
+
+const TESTSCENE_LUBEN = preload("res://scenes/testscene_luben.tscn")
+
 @export_group("Scene")
 @export var world_2d : Node2D
 @export var gui : Control
@@ -23,7 +26,7 @@ func _input(event: InputEvent) -> void:
 	
 func new_game() -> void:
 	print("new game")
-	var new_game_scene = JohnTest.new_scene()
+	var new_game_scene = TESTSCENE_LUBEN.instantiate()
 	change_2d_scene(new_game_scene)
 	change_gui_scene(null, false, true)
 	
