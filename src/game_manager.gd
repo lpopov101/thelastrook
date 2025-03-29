@@ -16,11 +16,30 @@ func _ready() -> void:
 	
 	curr_gui_scene = $GUI/MainMenu
 	
+func _input(event: InputEvent) -> void:
+	if event.is_action("Escape"):
+		if curr_2d_scene != null and curr_gui_scene == null:
+			pause_game()
+	
 func new_game() -> void:
 	print("new game")
+	var new_game_scene = JohnTest.new_scene()
+	change_2d_scene(new_game_scene)
+	change_gui_scene(null, false, true)
 	
 func open_settings() -> void:
 	print("settings")
+	
+func pause_game() -> void:
+	#curr_2d_scene.get_tree().paused = true
+	change_gui_scene(PauseMenu.new_scene())
+	
+func resume_game() -> void:
+	change_gui_scene(null)
+	
+func exit_to_main_menu() -> void:
+	change_2d_scene(null)
+	change_gui_scene($GUI/MainMenu)
 	
 func exit_game() -> void:
 	print("exit")
@@ -41,11 +60,13 @@ func change_gui_scene(new_scene: Node, delete: bool = true, keep_running: bool =
 		else:
 			gui.remove_child(curr_gui_scene)
 	
-	if new_scene != null:
-		gui.add_child(new_scene)
-		
 	curr_gui_scene = new_scene
-
+	if curr_gui_scene != null:
+		curr_gui_scene.visible = true
+		if !gui.get_children().has(curr_gui_scene):
+			gui.add_child(new_scene)
+		
+		
 ## Changes the 2d scene.
 ##
 ## If delete is set to true, the current scene will be removed entirely.
@@ -60,5 +81,8 @@ func change_2d_scene(new_scene: Node, delete: bool = true, keep_running: bool = 
 		else:
 			world_2d.remove_child(curr_2d_scene)
 		
-	world_2d.add_child(new_scene)
 	curr_2d_scene = new_scene
+	if curr_2d_scene != null:
+		curr_2d_scene.visible = true
+		if !world_2d.get_children().has(curr_2d_scene):
+			world_2d.add_child(new_scene)

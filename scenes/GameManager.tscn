@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bkvyiyiny481l" path="res://src/game_manager.gd" id="1_34tde"]
 [ext_resource type="PackedScene" uid="uid://y6p3x80hjoh2" path="res://scenes/main_menu.tscn" id="2_qppyr"]
 
-[node name="GameManager" type="Node"]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("world_2d", "gui")]
 script = ExtResource("1_34tde")
+world_2d = NodePath("World2d")
+gui = NodePath("GUI")
 
 [node name="World2d" type="Node2D" parent="."]
 
