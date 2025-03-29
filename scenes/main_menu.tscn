@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://y6p3x80hjoh2"]
+
+[ext_resource type="Script" uid="uid://opbe3xuxpuni" path="res://src/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://ban0lwcifpecn" path="res://assets/chess_board.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="3_8ln24"]
+[ext_resource type="StyleBox" uid="uid://cnrtf6vbo512a" path="res://resources/menu_style.tres" id="3_oa1go"]
+[ext_resource type="StyleBox" uid="uid://q323yqe6difc" path="res://resources/menu_button_normal.tres" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://c7mi48u36477g" path="res://assets/King-Gold.png" id="4_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://c3k3toksfgeyv" path="res://assets/Queen-Enemy.png" id="5_oa1go"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ekxnf")
+expand_mode = 5
+
+[node name="Container" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_right = 108.0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_oa1go")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.823529, 1)
+theme_override_font_sizes/font_size = 24
+text = "The Last Rook"
+horizontal_alignment = 1
+
+[node name="NewGameBtn" type="Button" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_styles/normal = ExtResource("3_rtw2f")
+text = "New Game"
+
+[node name="ExitBtn" type="Button" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_styles/normal = ExtResource("3_rtw2f")
+text = "Exit Game"
+
+[node name="Rook" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 180.0
+offset_right = 440.0
+offset_bottom = 220.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_8ln24")
+stretch_mode = 4
+
+[node name="King" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 100.0
+offset_right = 360.0
+offset_bottom = 140.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_rtw2f")
+stretch_mode = 4
+
+[node name="King2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 260.0
+offset_right = 520.0
+offset_bottom = 300.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_oa1go")
+stretch_mode = 4
+
+[connection signal="pressed" from="Container/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]
