@@ -5,6 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://q323yqe6difc" path="res://resources/menu_button_normal.tres" id="2_myx47"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

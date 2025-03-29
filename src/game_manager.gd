@@ -1,8 +1,7 @@
 class_name GameManager
 extends Node
 
-
-const TESTSCENE_LUBEN = preload("res://scenes/testscene_luben.tscn")
+const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 
 @export_group("Scene")
 @export var world_2d : Node2D
@@ -19,28 +18,42 @@ func _ready() -> void:
 	
 	curr_gui_scene = $GUI/MainMenu
 	
+	#connect main menu signals
+	curr_gui_scene.connect("new_game_pressed", new_game)
+	curr_gui_scene.connect("exit_game_pressed", exit_game)
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action("Escape"):
 		if curr_2d_scene != null and curr_gui_scene == null:
 			pause_game()
-	
+
+## creates a new game and loads the scene
 func new_game() -> void:
 	print("new game")
-	var new_game_scene = TESTSCENE_LUBEN.instantiate()
+	if get_tree().paused:
+		get_tree().paused = false
+	var new_game_scene = NEW_GAME_SCENE.instantiate()
 	change_2d_scene(new_game_scene)
 	change_gui_scene(null, false, true)
-	
-func open_settings() -> void:
-	print("settings")
-	
+
+## pauses the game and creates a pause menu and connects the signals for the menu
 func pause_game() -> void:
 	#curr_2d_scene.get_tree().paused = true
-	change_gui_scene(PauseMenu.new_scene())
+	var new_pause_scene = PauseMenu.new_scene()
+	new_pause_scene.connect("restart_pressed", new_game)
+	new_pause_scene.connect("main_menu_pressed", exit_to_main_menu)
+	new_pause_scene.connect("resume_game_pressed", resume_game)
+	change_gui_scene(new_pause_scene)
 	
+	get_tree().paused = true
+
+## resumes the game and gets rid of the pause menu
 func resume_game() -> void:
+	get_tree().paused = false
 	change_gui_scene(null)
 	
 func exit_to_main_menu() -> void:
+	get_tree().paused = false
 	change_2d_scene(null)
 	change_gui_scene($GUI/MainMenu)
 	
