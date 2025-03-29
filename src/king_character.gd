@@ -1,7 +1,7 @@
 class_name KingCharacter extends CharacterBody2D
 
 # The max (Manhattan) distance in pixels from the starting point the king is willing to move
-var MAX_DIST = 300
+var MAX_DIST = 100
 # Self explanatory
 var SPEED = 50
 signal DamagedKing
@@ -29,7 +29,7 @@ func _on_king_movement_timer_timeout() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	if (abs(self.position.x + (delta * SPEED * dx) - startX) + abs(self.position.y + (delta * SPEED * dy) - startY) < MAX_DIST):
-		velocity = Vector2(dx, dy) * SPEED * delta
+		velocity = Vector2(dx, dy) * SPEED
 	move_and_slide()
 
 func _on_king_hitbox_body_entered(body: Node2D) -> void:
