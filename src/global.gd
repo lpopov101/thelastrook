@@ -1,6 +1,6 @@
 extends Node
 
-var game_manager : GameManager
+var game_manager: GameManager
 var input_manager: InputManager
 
 func _ready() -> void:

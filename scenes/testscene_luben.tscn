@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://ban0lwcifpecn" path="res://assets/chess_board.png" id="1_6dpy0"]
 [ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="2_b2msw"]
-[ext_resource type="Script" uid="uid://bhvkg10se4qq2" path="res://src/rook.gd" id="2_rgtc0"]
+[ext_resource type="Script" path="res://src/rook.gd" id="2_rgtc0"]
 [ext_resource type="PackedScene" path="res://scenes/king_owen.tscn" id="2_tjnpa"]
-[ext_resource type="Script" uid="uid://bi3tqrd2blflv" path="res://src/king_character.gd" id="4_tjnpa"]
+[ext_resource type="Script" path="res://src/king_character.gd" id="4_tjnpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dpy0"]
 size = Vector2(50, 50)
@@ -87,10 +87,12 @@ position = Vector2(-412, 0)
 shape = SubResource("RectangleShape2D_3ttf0")
 
 [node name="King" type="CharacterBody2D" parent="."]
+position = Vector2(-126.25, -25.28)
 script = ExtResource("4_tjnpa")
 
 [node name="Sprite" parent="King" instance=ExtResource("2_tjnpa")]
 z_index = 1000
+scale = Vector2(1.25, 1.25)
 script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="King"]
