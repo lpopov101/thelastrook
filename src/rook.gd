@@ -24,6 +24,5 @@ func process_collisions():
 		if collision != null:
 			var collider = collision.get_collider()
 			if collider is KingCharacter:
-				print("hi")
 				cur_move_dir *= -1.0
 		collision_idx += 1
