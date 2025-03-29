@@ -87,10 +87,12 @@ position = Vector2(-412, 0)
 shape = SubResource("RectangleShape2D_3ttf0")
 
 [node name="King" type="CharacterBody2D" parent="."]
+position = Vector2(-126.25, -25.28)
 script = ExtResource("4_tjnpa")
 
 [node name="Sprite" parent="King" instance=ExtResource("2_tjnpa")]
 z_index = 1000
+scale = Vector2(1.25, 1.25)
 script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="King"]

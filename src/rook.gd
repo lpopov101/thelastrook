@@ -16,7 +16,7 @@ func _physics_process(delta: float):
 		if collision != null:
 			var collider = collision.get_collider()
 			if collider is KingCharacter:
-				print("hit king")
+				collider.take_damage(1)
 
 func update_move_dir(input_move_dir: Vector2):
 	if not is_zero_approx(input_move_dir.y):

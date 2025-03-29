@@ -3,8 +3,10 @@ class_name KingCharacter extends CharacterBody2D
 # The max (Manhattan) distance in pixels from the starting point the king is willing to move
 var MAX_DIST = 300
 # Self explanatory
-var SPEED = 50
-signal DamagedKing
+var SPEED = 10000
+var HEALTH = 10
+var INVINCIBILITY_MS = 100
+var LAST_DAMAGE_TIME = -100
 
 # Other not important stuff
 var direction = 0
@@ -32,5 +34,9 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2(dx, dy) * SPEED * delta
 	move_and_slide()
 
-func _on_king_hitbox_body_entered(body: Node2D) -> void:
-	DamagedKing.emit()
+func take_damage(damage: int):
+	var cur_time = Time.get_ticks_msec()
+	if cur_time - LAST_DAMAGE_TIME > INVINCIBILITY_MS:
+		HEALTH -= damage
+		print("King took damage: ", damage, " HP left: ", HEALTH)
+		LAST_DAMAGE_TIME = cur_time
