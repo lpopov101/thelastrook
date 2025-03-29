@@ -49,6 +49,7 @@ zoom = Vector2(0.45, 0.45)
 [node name="Rook" type="CharacterBody2D" parent="."]
 position = Vector2(-25, -25)
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("2_rgtc0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rook"]
@@ -90,6 +91,7 @@ shape = SubResource("RectangleShape2D_3ttf0")
 z_index = 1000
 position = Vector2(-126.25, -25.28)
 scale = Vector2(1.25, 1.25)
+platform_on_leave = 2
 script = ExtResource("4_tjnpa")
 SPEED = 50
 HEALTH = 10
