@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcbrmgumytywx"]
+[gd_scene load_steps=9 format=3 uid="uid://bcbrmgumytywx"]
 
 [ext_resource type="Texture2D" uid="uid://ban0lwcifpecn" path="res://assets/chess_board.png" id="1_6dpy0"]
 [ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="2_b2msw"]
 [ext_resource type="Script" uid="uid://bhvkg10se4qq2" path="res://src/rook.gd" id="2_rgtc0"]
 [ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="2_tjnpa"]
-[ext_resource type="Script" uid="uid://bi3tqrd2blflv" path="res://src/king_character.gd" id="4_tjnpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dpy0"]
 size = Vector2(50, 50)
@@ -49,7 +48,6 @@ zoom = Vector2(0.45, 0.45)
 [node name="Rook" type="CharacterBody2D" parent="."]
 position = Vector2(-25, -25)
 motion_mode = 1
-platform_on_leave = 2
 script = ExtResource("2_rgtc0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rook"]
@@ -91,12 +89,8 @@ shape = SubResource("RectangleShape2D_3ttf0")
 z_index = 1000
 position = Vector2(-126.25, -25.28)
 scale = Vector2(1.25, 1.25)
+motion_mode = 1
 platform_on_leave = 2
-script = ExtResource("4_tjnpa")
-SPEED = 50
-HEALTH = 10
-INVINCIBILITY_MS = 100
-CHANGE_DIR_MS = 2000
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="King"]
 scale = Vector2(0.8, 0.8)
