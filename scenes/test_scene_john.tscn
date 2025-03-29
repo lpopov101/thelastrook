@@ -95,7 +95,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAAAAAAMAAAD+/wEAAAAAAAQAAAD+/wIAAAAAAAU
 tile_set = SubResource("TileSet_g0d5q")
 
 [node name="Rook" parent="." instance=ExtResource("2_7000y")]
-position = Vector2(345, 194)
+position = Vector2(353, 193)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("5_by1eb")

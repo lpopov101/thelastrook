@@ -11,12 +11,12 @@ static func new_scene() -> PauseMenu:
 	return PAUSE_MENU.instantiate()
 
 func _on_restart_btn_pressed() -> void:
-	restart_pressed.emit()
+	SigBus.RestartPressed.emit()
 
 
 func _on_main_menu_btn_pressed() -> void:
-	main_menu_pressed.emit()
+	SigBus.MainMenuPressed.emit()
 
 
 func _on_resume_btn_pressed() -> void:
-	resume_game_pressed.emit()
+	SigBus.ResumeGamePressed.emit()

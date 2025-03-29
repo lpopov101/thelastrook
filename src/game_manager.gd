@@ -7,8 +7,10 @@ const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 @export var world_2d : Node2D
 @export var gui : Control
 
-@export_group("Wave")
+@export_group("Game State")
 @export var wave : int = 0
+@export var king_health : int = 0
+@export var dmg_amt : int = 20
 
 var curr_2d_scene
 var curr_gui_scene
@@ -19,8 +21,7 @@ func _ready() -> void:
 	curr_gui_scene = $GUI/MainMenu
 	
 	#connect main menu signals
-	curr_gui_scene.connect("new_game_pressed", new_game)
-	curr_gui_scene.connect("exit_game_pressed", exit_game)
+	_connect_signals()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action("Escape"):
@@ -30,9 +31,18 @@ func _input(event: InputEvent) -> void:
 ## creates a new game and loads the scene
 func new_game() -> void:
 	print("new game")
+	#Pause scenes except for menus
 	if get_tree().paused:
 		get_tree().paused = false
+		
+	#reset game info
+	wave = 1
+	king_health = 100
+	
+	#create a new game scene
 	var new_game_scene = NEW_GAME_SCENE.instantiate()
+	
+	#add new game to tree
 	change_2d_scene(new_game_scene)
 	change_gui_scene(null, false, true)
 
@@ -40,9 +50,6 @@ func new_game() -> void:
 func pause_game() -> void:
 	#curr_2d_scene.get_tree().paused = true
 	var new_pause_scene = PauseMenu.new_scene()
-	new_pause_scene.connect("restart_pressed", new_game)
-	new_pause_scene.connect("main_menu_pressed", exit_to_main_menu)
-	new_pause_scene.connect("resume_game_pressed", resume_game)
 	change_gui_scene(new_pause_scene)
 	
 	get_tree().paused = true
@@ -60,6 +67,15 @@ func exit_to_main_menu() -> void:
 func exit_game() -> void:
 	print("exit")
 	get_tree().quit()
+	
+func king_damaged() -> void:
+	king_health = max(king_health - dmg_amt, 0)
+	if king_health == 0:
+		print(Global.game_manager)
+		SigBus.GameOver.emit()
+		
+func game_over() -> void:
+	print("Game Over")
 
 	
 ## Changes the GUI scene.
@@ -102,3 +118,14 @@ func change_2d_scene(new_scene: Node, delete: bool = true, keep_running: bool = 
 		curr_2d_scene.visible = true
 		if !world_2d.get_children().has(curr_2d_scene):
 			world_2d.add_child(new_scene)
+			
+func _connect_signals() -> void:
+	SigBus.NewGamePressed.connect(new_game)
+	SigBus.ExitGamePressed.connect(exit_game)
+	
+	SigBus.connect("RestartPressed", new_game)
+	SigBus.connect("MainMenuPressed", exit_to_main_menu)
+	SigBus.connect("ResumeGamePressed", resume_game)
+	
+	SigBus.connect("DamagedKing", king_damaged)
+	SigBus.connect("GameOver", game_over)
