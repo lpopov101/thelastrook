@@ -1,4 +1,4 @@
-class_name King extends Node2D
+class_name King extends CharacterBody2D
 
 # The max (Manhattan) distance in pixels from the starting point the king is willing to move
 var MAX_DIST = 300
@@ -28,8 +28,12 @@ func _on_king_movement_timer_timeout() -> void:
 
 func _physics_process(delta: float) -> void:
 	if (abs(self.position.x + (delta * SPEED * dx) - startX) + abs(self.position.y + (delta * SPEED * dy) - startY) < MAX_DIST):
-		self.position.x += delta * SPEED * dx
-		self.position.y += delta * SPEED * dy
+		#self.position.x += delta * SPEED * dx
+		#self.position.y += delta * SPEED * dy
+		velocity.x = SPEED * dx
+		velocity.y = SPEED * dy
+		move_and_slide()
 
 func _on_king_hitbox_body_entered(body: Node2D) -> void:
+	# TODO: Write some if statements to check what is hitting the king
 	DamagedKing.emit()
