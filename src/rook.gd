@@ -9,11 +9,12 @@ func _physics_process(delta: float):
 	update_move_dir(input_move_dir)
 	velocity = cur_move_dir * speed * delta
 	move_and_slide()
-	var collision = get_last_slide_collision()
-	if collision != null:
-		var collider = collision.get_collider()
-		if collider is KingCharacter:
-			print("hit king")
+	for collision_idx in [0, get_slide_collision_count()]:
+		var collision = get_slide_collision(collision_idx)
+		if collision != null:
+			var collider = collision.get_collider()
+			if collider is KingCharacter:
+				print("hit king")
 
 func update_move_dir(input_move_dir: Vector2):
 	if not is_zero_approx(input_move_dir.y):
