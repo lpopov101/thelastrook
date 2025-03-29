@@ -1,13 +1,13 @@
 class_name Rook extends CharacterBody2D
 
-@export var speed = 10000
+@export var speed = 300
 
 var cur_move_dir = Vector2.ZERO
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	var input_move_dir = Global.input_manager.get_move_dir()
 	update_move_dir(input_move_dir)
-	velocity = cur_move_dir * speed * delta
+	velocity = cur_move_dir * speed
 	move_and_slide()
 	if get_slide_collision_count() == 0:
 		return
