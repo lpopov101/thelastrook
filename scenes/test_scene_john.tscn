@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cue8v1hr04pm7" path="res://src/test_scene_john.gd" id="1_g86ge"]
 [ext_resource type="PackedScene" uid="uid://dw57axs3ewcec" path="res://scenes/rook.tscn" id="2_7000y"]
 [ext_resource type="Texture2D" uid="uid://ban0lwcifpecn" path="res://assets/chess_board.png" id="2_g86ge"]
-[ext_resource type="Script" uid="uid://bhvkg10se4qq2" path="res://src/rook.gd" id="4_g0d5q"]
 [ext_resource type="Script" uid="uid://b326kidl5usfr" path="res://src/input_manager.gd" id="5_by1eb"]
+[ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="5_g0d5q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3jw41"]
 texture = ExtResource("2_g86ge")
@@ -94,10 +94,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAAAAAAMAAAD+/wEAAAAAAAQAAAD+/wIAAAAAAAU
 tile_set = SubResource("TileSet_g0d5q")
 
 [node name="Rook" parent="." instance=ExtResource("2_7000y")]
-position = Vector2(307, 200)
-scale = Vector2(0.65, 0.65)
-script = ExtResource("4_g0d5q")
-speed = 10000
+position = Vector2(345, 194)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("5_by1eb")
@@ -132,3 +129,6 @@ position = Vector2(-412, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Left"]
 position = Vector2(202, -39)
 shape = SubResource("RectangleShape2D_g0d5q")
+
+[node name="KingOwen" parent="." instance=ExtResource("5_g0d5q")]
+position = Vector2(306, 193)
