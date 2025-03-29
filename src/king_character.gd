@@ -1,12 +1,11 @@
 class_name KingCharacter extends CharacterBody2D
 
-# The max (Manhattan) distance in pixels from the starting point the king is willing to move
-var MAX_DIST = 300
-# Self explanatory
-var SPEED = 10000
-var HEALTH = 10
-var INVINCIBILITY_MS = 100
-var LAST_DAMAGE_TIME = -100
+@export var SPEED = 50
+@export var HEALTH = 10
+@export var INVINCIBILITY_MS = 100
+@export var CHANGE_DIR_MS = 2000
+var LAST_DAMAGE_TIME = - INVINCIBILITY_MS
+var LAST_CHANGE_DIR_TIME = - CHANGE_DIR_MS
 
 # Other not important stuff
 var direction = 0
@@ -21,18 +20,20 @@ var startY = 0
 func _ready() -> void:
 	startX = self.position.x
 	startY = self.position.y
-	_on_king_movement_timer_timeout()
+	change_direction()
 
-func _on_king_movement_timer_timeout() -> void:
-	direction = randi() % 8
-	dx = cos(direction * pi / 4)
-	dy = sin(direction * pi / 4)
-
-func _physics_process(delta: float) -> void:
-	velocity = Vector2.ZERO
-	if (abs(self.position.x + (delta * SPEED * dx) - startX) + abs(self.position.y + (delta * SPEED * dy) - startY) < MAX_DIST):
-		velocity = Vector2(dx, dy) * SPEED
+func _physics_process(_delta: float) -> void:
+	var cur_time = Time.get_ticks_msec()
+	if cur_time - LAST_CHANGE_DIR_TIME > CHANGE_DIR_MS:
+		change_direction()
+		LAST_CHANGE_DIR_TIME = cur_time
+	velocity = Vector2(dx, dy).normalized() * SPEED
 	move_and_slide()
+
+func change_direction() -> void:
+	direction = randi() % 8
+	dx = cos(direction * (PI / 4))
+	dy = sin(direction * (PI / 4))
 
 func take_damage(damage: int):
 	var cur_time = Time.get_ticks_msec()
