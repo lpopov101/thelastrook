@@ -11,7 +11,7 @@ func _physics_process(delta: float):
 	move_and_slide()
 	if get_slide_collision_count() == 0:
 		return
-	for collision_idx in [0, get_slide_collision_count()-1]:
+	for collision_idx in [0, get_slide_collision_count() - 1]:
 		var collision = get_slide_collision(collision_idx)
 		if collision != null:
 			var collider = collision.get_collider()

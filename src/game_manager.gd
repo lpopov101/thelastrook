@@ -4,11 +4,11 @@ extends Node
 const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 
 @export_group("Scene")
-@export var world_2d : Node2D
-@export var gui : Control
+@export var world_2d: Node2D
+@export var gui: Control
 
 @export_group("Wave")
-@export var wave : int = 0
+@export var wave: int = 0
 
 var curr_2d_scene
 var curr_gui_scene
@@ -70,9 +70,9 @@ func exit_game() -> void:
 func change_gui_scene(new_scene: Node, delete: bool = true, keep_running: bool = false) -> void:
 	if curr_gui_scene != null:
 		if delete:
-			curr_gui_scene.queue_free() #Removes node entirely
+			curr_gui_scene.queue_free() # Removes node entirely
 		elif keep_running:
-			curr_gui_scene.visible = false #keeps in memory and running
+			curr_gui_scene.visible = false # keeps in memory and running
 		else:
 			gui.remove_child(curr_gui_scene)
 	
@@ -91,9 +91,9 @@ func change_gui_scene(new_scene: Node, delete: bool = true, keep_running: bool =
 func change_2d_scene(new_scene: Node, delete: bool = true, keep_running: bool = false) -> void:
 	if curr_2d_scene != null:
 		if delete:
-			curr_2d_scene.queue_free() #Removes node entirely
+			curr_2d_scene.queue_free() # Removes node entirely
 		elif keep_running:
-			curr_2d_scene.visible = false #keeps in memory and running
+			curr_2d_scene.visible = false # keeps in memory and running
 		else:
 			world_2d.remove_child(curr_2d_scene)
 		
