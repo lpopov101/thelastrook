@@ -1,6 +1,6 @@
 class_name King extends Node2D
 
-# The max (Manhattan) distance in pixels from the center the king is willing to move
+# The max (Manhattan) distance in pixels from the starting point the king is willing to move
 var MAX_DIST = 300
 # Self explanatory
 var SPEED = 50
@@ -11,10 +11,14 @@ var direction = 0
 var pi = 3*acos(.5)
 var dx = 0
 var dy = 0
+var startX = 0
+var startY = 0
 
 @onready var king: King = $"."
 
 func _ready() -> void:
+	startX = self.position.x
+	startY = self.position.y
 	_on_king_movement_timer_timeout()
 
 func _on_king_movement_timer_timeout() -> void:
@@ -23,7 +27,7 @@ func _on_king_movement_timer_timeout() -> void:
 	dy = sin(direction * pi/4)
 
 func _physics_process(delta: float) -> void:
-	if (abs(self.position.x + (delta * SPEED * dx)) + abs(self.position.y + (delta * SPEED * dy)) < MAX_DIST):
+	if (abs(self.position.x + (delta * SPEED * dx) - startX) + abs(self.position.y + (delta * SPEED * dy) - startY) < MAX_DIST):
 		self.position.x += delta * SPEED * dx
 		self.position.y += delta * SPEED * dy
 
