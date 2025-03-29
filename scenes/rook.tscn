@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw57axs3ewcec"]
 
 [ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="1_fdtut"]
-[ext_resource type="Script" uid="uid://u6wu22emp1j7" path="res://src/Rook.cs" id="1_ih210"]
+[ext_resource type="Script" uid="uid://bhvkg10se4qq2" path="res://src/rook.gd" id="1_ih210"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih210"]
 size = Vector2(40, 40)
