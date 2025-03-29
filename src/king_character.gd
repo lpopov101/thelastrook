@@ -1,7 +1,7 @@
 class_name KingCharacter extends CharacterBody2D
 
 # The max (Manhattan) distance in pixels from the starting point the king is willing to move
-var MAX_DIST = 300
+var MAX_DIST = 100
 # Self explanatory
 var SPEED = 10000
 var HEALTH = 10
