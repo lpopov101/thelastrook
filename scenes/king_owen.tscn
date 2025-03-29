@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlafkxu8sx7i1"]
 
-[ext_resource type="Script" uid="uid://cowxqcqaeepxl" path="res://src/king.gd" id="1_bvmw8"]
+[ext_resource type="Script" uid="uid://bi3tqrd2blflv" path="res://src/king_character.gd" id="1_bvmw8"]
 [ext_resource type="Texture2D" uid="uid://c7mi48u36477g" path="res://assets/King-Gold.png" id="1_gc0r3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bvmw8"]
