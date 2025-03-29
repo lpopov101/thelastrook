@@ -19,8 +19,7 @@ func _ready() -> void:
 	curr_gui_scene = $GUI/MainMenu
 	
 	#connect main menu signals
-	curr_gui_scene.connect("new_game_pressed", new_game)
-	curr_gui_scene.connect("exit_game_pressed", exit_game)
+	_connect_signals()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action("Escape"):
@@ -40,9 +39,6 @@ func new_game() -> void:
 func pause_game() -> void:
 	#curr_2d_scene.get_tree().paused = true
 	var new_pause_scene = PauseMenu.new_scene()
-	new_pause_scene.connect("restart_pressed", new_game)
-	new_pause_scene.connect("main_menu_pressed", exit_to_main_menu)
-	new_pause_scene.connect("resume_game_pressed", resume_game)
 	change_gui_scene(new_pause_scene)
 	
 	get_tree().paused = true
@@ -102,3 +98,14 @@ func change_2d_scene(new_scene: Node, delete: bool = true, keep_running: bool = 
 		curr_2d_scene.visible = true
 		if !world_2d.get_children().has(curr_2d_scene):
 			world_2d.add_child(new_scene)
+			
+func _connect_signals() -> void:
+	#connect main menu signals
+	SigBus.connect("NewGamePressed", new_game)
+	SigBus.connect("ExitGamePressed", exit_game)
+	
+	#connect paused menu signals
+	SigBus.connect("RestartPressed", new_game)
+	SigBus.connect("MainMenuPressed", exit_to_main_menu)
+	SigBus.connect("ResumeGamePressed", resume_game)
+	
