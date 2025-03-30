@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var enemy_defeated_sound: AudioStream = preload("res://assets/enemydefeated.ogg")
 
 const BISHOP = preload("res://scenes/bishop.tscn")
-@export var speed : float = 200.0 # default
+@export var speed : float = 100.0 # default
 
 var target : Vector2 = Vector2.ZERO
 var y_direction : int = -1
