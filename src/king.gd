@@ -3,12 +3,12 @@ class_name King extends CharacterBody2D
 # The max (Manhattan) distance in pixels from the starting point the king is willing to move
 var MAX_DIST = 300
 # Self explanatory
-var SPEED = 50
+var SPEED = 10
 signal DamagedKing
 
 # Other not important stuff
 var direction = 0
-var pi = 3*acos(.5)
+var pi = 3 * acos(.5)
 var dx = 0
 var dy = 0
 var startX = 0
@@ -23,8 +23,8 @@ func _ready() -> void:
 
 func _on_king_movement_timer_timeout() -> void:
 	direction = randi() % 8
-	dx = cos(direction * pi/4)
-	dy = sin(direction * pi/4)
+	dx = cos(direction * pi / 4)
+	dy = sin(direction * pi / 4)
 
 func _physics_process(delta: float) -> void:
 	if (abs(self.position.x + (delta * SPEED * dx) - startX) + abs(self.position.y + (delta * SPEED * dy) - startY) < MAX_DIST):

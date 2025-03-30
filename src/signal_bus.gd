@@ -8,9 +8,8 @@ signal ResumeGamePressed
 signal NewGamePressed
 signal ExitGamePressed
 
-#entity signals
+#enetity signals
 signal DamagedKing
-signal KingHealthUpdate
 
 #game state signals
 signal WaveChanged(new_wave)
