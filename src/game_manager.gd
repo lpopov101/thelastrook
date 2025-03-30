@@ -57,6 +57,7 @@ func new_game() -> void:
 	#reset game info
 	wave = 1
 	king_health = 100
+	cur_ability = Ability.NONE
 	
 	#create a new game scene
 	var new_game_scene = NEW_GAME_SCENE.instantiate()
