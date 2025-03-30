@@ -20,7 +20,7 @@ var ability_name_map = {
 	Ability.CASTLE: "Castle"
 }
 
-@export var cur_ability = Ability.CANNON
+@export var cur_ability = Ability.NONE
 var cur_ability_percent = 100.0;
 
 var curr_2d_scene
