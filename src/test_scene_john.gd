@@ -8,7 +8,8 @@ const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
 enum EnemyTypes{
 	PAWN,
 	BISHOP,
-	QUEEN
+	QUEEN,
+	ROOK
 }
 
 func _ready():
@@ -38,6 +39,9 @@ func _on_enemy_spawn_timer_timeout():
 		EnemyTypes.QUEEN:
 			var new_queen = Queen.new_queen()
 			_spawn_piece_at_location(new_queen, spawn_location)
+		EnemyTypes.ROOK:
+			var new_rook = RookEnemy.new_rook()
+			_spawn_piece_at_location(new_rook, spawn_location)
 			
 	
 	#increase timer if wave has increased
@@ -70,7 +74,7 @@ func _spawn_bishop_at_position(pawn_spawn_location) -> void:
 	
 	#add to tree
 	add_child(new_bishop)
-	
+
 func _spawn_piece_at_location(new_piece, pawn_spawn_location) -> void:
 	#set piece position
 	new_piece.position = pawn_spawn_location.position
