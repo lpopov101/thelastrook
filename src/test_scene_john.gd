@@ -2,14 +2,14 @@ class_name JohnTest
 extends Node2D
 
 const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
-const PAWN_SCENE : PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
+const PAWN_SCENE: PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
 
 func _ready():
 	$PawnSpawnTimer.timeout.connect(_on_pawn_spawn_timer_timeout)
 	$PawnSpawnTimer.start()
 
-func _on_pawn_spawn_timer_timeout():	
-	var pawn_spawn_location : PathFollow2D = get_node_or_null("PawnSpawnPath/PawnSpawnLocation")
+func _on_pawn_spawn_timer_timeout():
+	var pawn_spawn_location: PathFollow2D = get_node_or_null("PawnSpawnPath/PawnSpawnLocation")
 	
 	if not pawn_spawn_location:
 		print("Error! Pawn spawn location couldn't be gotten!")
@@ -20,7 +20,7 @@ func _on_pawn_spawn_timer_timeout():
 	_spawn_pawn_at_position(pawn_spawn_location)
 
 func _spawn_pawn_at_position(pawn_spawn_location: PathFollow2D):
-	var pawn : Pawn = PAWN_SCENE.instantiate()
+	var pawn: Pawn = PAWN_SCENE.instantiate()
 	pawn.position = pawn_spawn_location.position
 
 	# set pawn's direction perpendicular to the path direction.
