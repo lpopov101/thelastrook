@@ -16,6 +16,7 @@ var moat_active = false
 
 @export var cannon_cooldown_ms = 500
 @export var cannon_offset = 30
+@export var cannon_shot_speed_mult = 3.0
 
 @export var castle_cooldown_ms = 3000
 
@@ -96,7 +97,7 @@ func handle_cannon():
 		var cannon_shot = CANNON_SHOT_SCENE.instantiate()
 		var direction = cur_move_dir if cur_move_dir != Vector2.ZERO else Vector2(1, 0)
 		cannon_shot.global_position = global_position + (cannon_offset * direction)
-		cannon_shot.speed = speed * 3.0
+		cannon_shot.speed = speed * cannon_shot_speed_mult
 		cannon_shot.direction = direction
 		cannon_shot.rotate(direction.angle())
 		get_parent().add_child(cannon_shot)
