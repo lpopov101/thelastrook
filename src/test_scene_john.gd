@@ -4,8 +4,11 @@ extends Node2D
 const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
 
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
+@onready var king: KingCharacter = $"King"
 
-enum SpawnableEnemyTypes{
+@export var min_spawn_dist_from_king = 250
+
+enum SpawnableEnemyTypes {
 	PAWN,
 	BISHOP,
 	ROOK
@@ -16,8 +19,8 @@ func _ready():
 	enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 	enemy_spawn_timer.start()
 
-func _on_enemy_spawn_timer_timeout():	
-	var spawn_location : PathFollow2D = get_node_or_null("EnemySpawnPath/EnemySpawnLocation")
+func _on_enemy_spawn_timer_timeout():
+	var spawn_location: PathFollow2D = get_node_or_null("EnemySpawnPath/EnemySpawnLocation")
 	
 	if not spawn_location:
 		print("Error! Enemy spawn location couldn't be gotten!")
@@ -25,6 +28,8 @@ func _on_enemy_spawn_timer_timeout():
 	
 	# we can change this later to see if we want to spawn pawns away from the king
 	spawn_location.progress_ratio = randf()
+	while spawn_location.global_position.distance_to(king.global_position) < min_spawn_dist_from_king:
+		spawn_location.progress_ratio = randf()
 	
 	#choose who to spawn
 	var spawn_type = SpawnableEnemyTypes.values().pick_random()
@@ -56,7 +61,7 @@ func _on_enemy_spawn_timer_timeout():
 		enemy_spawn_timer.wait_time = 0.1
 
 func _spawn_pawn_at_position(spawn_location: PathFollow2D):
-	var pawn : Pawn = Pawn.new_pawn()
+	var pawn: Pawn = Pawn.new_pawn()
 	pawn.position = spawn_location.position
 
 	# set pawn's direction perpendicular to the path direction.
