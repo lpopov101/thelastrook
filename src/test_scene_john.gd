@@ -8,7 +8,8 @@ const PAWN_SCENE: PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
 
 enum EnemyTypes{
 	PAWN,
-	BISHOP
+	BISHOP,
+	ROOK
 }
 
 func _ready():
@@ -34,6 +35,8 @@ func _on_pawn_spawn_timer_timeout():
 			_spawn_pawn_at_position(spawn_location)
 		EnemyTypes.BISHOP:
 			_spawn_bishop_at_position(spawn_location)
+		EnemyTypes.ROOK:
+			_spawn_rook_at_position(spawn_location)
 			
 	
 	#increase timer if wave has increased
@@ -66,6 +69,16 @@ func _spawn_bishop_at_position(pawn_spawn_location) -> void:
 	
 	#add to tree
 	add_child(new_bishop)
+	
+func _spawn_rook_at_position(pawn_spawn_location) -> void:
+	#create bishop
+	var new_rook = RookEnemy.new_rook()
+	
+	#set bishop position
+	new_rook.position = pawn_spawn_location.position
+	
+	#add to tree
+	add_child(new_rook)
 
 static func new_scene() -> JohnTest:
 	var new_s = TEST_SCENE.instantiate()

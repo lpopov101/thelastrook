@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd6h5ayxump0n"]
+
+[ext_resource type="Texture2D" uid="uid://ci1bwyfl8mwx7" path="res://assets/Rook-Enemy.png" id="1_0vtsq"]
+[ext_resource type="Script" uid="uid://po8vknci6afk" path="res://rook_enemy.gd" id="1_xfgaw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xfgaw"]
+radius = 13.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsvqi"]
+radius = 8.0
+height = 32.0
+
+[node name="RookEnemy" type="CharacterBody2D"]
+script = ExtResource("1_xfgaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0vtsq")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemyAttack"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_xfgaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_bsvqi")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
