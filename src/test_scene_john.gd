@@ -2,55 +2,60 @@ class_name JohnTest
 extends Node2D
 
 const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
-const PAWN_SCENE: PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
 
-@onready var pawn_spawn_timer: Timer = $PawnSpawnTimer
+@onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 
-enum EnemyTypes{
+enum SpawnableEnemyTypes{
 	PAWN,
 	BISHOP,
 	ROOK
 }
 
 func _ready():
-	pawn_spawn_timer.timeout.connect(_on_pawn_spawn_timer_timeout)
-	pawn_spawn_timer.start()
+	enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
+	enemy_spawn_timer.start()
 
-func _on_pawn_spawn_timer_timeout():	
-	var spawn_location : PathFollow2D = get_node_or_null("PawnSpawnPath/PawnSpawnLocation")
+func _on_enemy_spawn_timer_timeout():	
+	var spawn_location : PathFollow2D = get_node_or_null("EnemySpawnPath/EnemySpawnLocation")
 	
 	if not spawn_location:
-		print("Error! Pawn spawn location couldn't be gotten!")
+		print("Error! Enemy spawn location couldn't be gotten!")
 		return
 	
 	# we can change this later to see if we want to spawn pawns away from the king
 	spawn_location.progress_ratio = randf()
 	
 	#choose who to spawn
-	var spawn_type = EnemyTypes.values().pick_random()
+	var spawn_type = SpawnableEnemyTypes.values().pick_random()
 	
 	#create the correct enemy
 	match spawn_type:
-		EnemyTypes.PAWN:
+		SpawnableEnemyTypes.PAWN:
 			_spawn_pawn_at_position(spawn_location)
-		EnemyTypes.BISHOP:
-			_spawn_bishop_at_position(spawn_location)
-		EnemyTypes.ROOK:
-			_spawn_rook_at_position(spawn_location)
+		SpawnableEnemyTypes.BISHOP:
+			var new_bishop = Bishop.new_bishop()
+			_spawn_piece_at_location(new_bishop, spawn_location)
+		SpawnableEnemyTypes.ROOK:
+			var new_rook = RookEnemy.new_rook()
+			_spawn_piece_at_location(new_rook, spawn_location)
 			
 	
 	#increase timer if wave has increased
-	if Global.game_manager.wave > 1:
-		pawn_spawn_timer.wait_time = 4
-	elif Global.game_manager.wave > 2:
-		pawn_spawn_timer.wait_time = 4
-	elif Global.game_manager.wave > 4:
-		pawn_spawn_timer.wait_time = 2
-	elif Global.game_manager.wave > 6:
-		pawn_spawn_timer.wait_time = 1
+	if Global.game_manager.wave < 2:
+		enemy_spawn_timer.wait_time = 4
+	elif Global.game_manager.wave < 4:
+		enemy_spawn_timer.wait_time = 2
+	elif Global.game_manager.wave < 6:
+		enemy_spawn_timer.wait_time = 1
+	elif Global.game_manager.wave < 8:
+		enemy_spawn_timer.wait_time = 0.7
+	elif Global.game_manager.wave < 10:
+		enemy_spawn_timer.wait_time = 0.4
+	else:
+		enemy_spawn_timer.wait_time = 0.1
 
 func _spawn_pawn_at_position(spawn_location: PathFollow2D):
-	var pawn : Pawn = PAWN_SCENE.instantiate()
+	var pawn : Pawn = Pawn.new_pawn()
 	pawn.position = spawn_location.position
 
 	# set pawn's direction perpendicular to the path direction.
@@ -69,16 +74,13 @@ func _spawn_bishop_at_position(pawn_spawn_location) -> void:
 	
 	#add to tree
 	add_child(new_bishop)
-	
-func _spawn_rook_at_position(pawn_spawn_location) -> void:
-	#create bishop
-	var new_rook = RookEnemy.new_rook()
-	
-	#set bishop position
-	new_rook.position = pawn_spawn_location.position
+
+func _spawn_piece_at_location(new_piece, pawn_spawn_location) -> void:
+	#set piece position
+	new_piece.position = pawn_spawn_location.position
 	
 	#add to tree
-	add_child(new_rook)
+	add_child(new_piece)
 
 static func new_scene() -> JohnTest:
 	var new_s = TEST_SCENE.instantiate()

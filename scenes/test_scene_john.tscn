@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="5_g0d5q"]
 [ext_resource type="PackedScene" uid="uid://c6y4mf5qugen0" path="res://scenes/king_health_display.tscn" id="6_by1eb"]
 [ext_resource type="PackedScene" uid="uid://l41y2ti8u02a" path="res://scenes/wave_timer.tscn" id="7_essfb"]
-[ext_resource type="Script" path="res://src/pawn_spawn_path.gd" id="8_r64sa"]
-[ext_resource type="Script" uid="uid://uowc8e46r6ui" path="res://src/powerup_spawner.gd" id="9_4r2nf"]
+[ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/enemy_spawn_path.gd" id="8_r64sa"]
+[ext_resource type="Script" path="res://src/powerup_spawner.gd" id="9_4r2nf"]
 [ext_resource type="AudioStream" uid="uid://rm3ham1lig6v" path="res://assets/enemydefeated.ogg" id="10_6qqen"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r64sa"]
@@ -653,17 +653,17 @@ shape = SubResource("RectangleShape2D_g0d5q")
 
 [node name="WaveTimer" parent="." instance=ExtResource("7_essfb")]
 
-[node name="PawnSpawnTimer" type="Timer" parent="."]
+[node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 
-[node name="PawnSpawnPath" type="Path2D" parent="."]
+[node name="EnemySpawnPath" type="Path2D" parent="."]
 script = ExtResource("8_r64sa")
 camera_path = NodePath("../Camera2D")
 
-[node name="PawnSpawnLocation" type="PathFollow2D" parent="PawnSpawnPath"]
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
 
 [node name="Audio" type="Node" parent="."]
 
