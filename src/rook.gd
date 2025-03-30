@@ -65,7 +65,7 @@ func process_collisions():
 			var collider = collision.get_collider()
 			if collider is KingCharacter:
 				cur_move_dir *= -1.0
-			if collider is Pawn:
+			if collider.is_in_group(Global.ENEMY_GROUP):
 				defeat_basic_enemy_sfx.play()
 		collision_idx += 1
 
