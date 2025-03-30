@@ -21,6 +21,7 @@ size = Vector2(28, 41)
 size = Vector2(27, 39)
 
 [node name="KingOwen" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_bvmw8")
 
 [node name="KingSprite" type="AnimatedSprite2D" parent="."]
