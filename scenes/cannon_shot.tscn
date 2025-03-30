@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jub1k"]
 size = Vector2(26, 20)
 
-[node name="CannonShot" type="Area2D"]
+[node name="CannonShot" type="Area2D" groups=["playerAttack"]]
 script = ExtResource("1_jub1k")
 
 [node name="Sprite" type="Sprite2D" parent="."]

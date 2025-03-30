@@ -10,7 +10,7 @@ size = Vector2(26, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdqtm"]
 size = Vector2(79, 78)
 
-[node name="Rook" type="CharacterBody2D"]
+[node name="Rook" type="CharacterBody2D" groups=["playerAttack"]]
 motion_mode = 1
 script = ExtResource("1_ih210")
 
