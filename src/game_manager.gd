@@ -12,14 +12,15 @@ const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 @export var king_health: int = 0
 @export var dmg_amt: int = 20
 
-enum Ability {MOAT, CANNON}
+enum Ability {MOAT, CANNON, CASTLE}
 
 var ability_name_map = {
 	Ability.MOAT: "Moat",
-	Ability.CANNON: "Cannon"
+	Ability.CANNON: "Cannon",
+	Ability.CASTLE: "Castle"
 }
 
-@export var cur_ability = Ability.MOAT
+@export var cur_ability = Ability.CASTLE
 var cur_ability_percent = 100.0;
 
 var curr_2d_scene

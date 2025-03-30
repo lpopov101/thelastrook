@@ -13,6 +13,7 @@ class_name Rook extends CharacterBody2D
 var moat_active = false
 
 @export var cannon_cooldown_ms = 500
+@export var castle_cooldown_ms = 3000
 
 var last_ability_time_ms = -10000
 var cur_move_dir = Vector2.ZERO
@@ -34,13 +35,6 @@ func handle_movement():
 	process_collisions()
 	velocity = cur_move_dir * speed * get_speed_mult()
 	move_and_slide()
-	
-	if Global.input_manager.get_just_pressed_castle():
-		var temp_king = king.global_position
-		var temp_rook = global_position
-		global_position = Vector2(-1000, -1000)
-		king.global_position = temp_rook
-		global_position = temp_king
 
 func update_move_dir(input_move_dir: Vector2):
 	if not is_zero_approx(input_move_dir.y):
@@ -71,6 +65,8 @@ func handle_abilities():
 		handle_moat()
 	elif Global.game_manager.cur_ability == GameManager.Ability.CANNON:
 		handle_cannon()
+	elif Global.game_manager.cur_ability == GameManager.Ability.CASTLE:
+		handle_castle()
 
 func handle_moat():
 	var cur_time = Time.get_ticks_msec()
@@ -96,3 +92,14 @@ func handle_cannon():
 		# todo: fire cannon
 		last_ability_time_ms = cur_time
 	Global.game_manager.cur_ability_percent = float(cur_time - last_ability_time_ms) / float(cannon_cooldown_ms) * 100.0
+
+func handle_castle():
+	var cur_time = Time.get_ticks_msec()
+	if Global.input_manager.get_ability() and cur_time - last_ability_time_ms > castle_cooldown_ms:
+		var temp_king = king.global_position
+		var temp_rook = global_position
+		global_position = Vector2(-1000, -1000)
+		king.global_position = temp_rook
+		global_position = temp_king
+		last_ability_time_ms = cur_time
+	Global.game_manager.cur_ability_percent = float(cur_time - last_ability_time_ms) / float(castle_cooldown_ms) * 100.0
