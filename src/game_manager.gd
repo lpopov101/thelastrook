@@ -39,6 +39,14 @@ func _input(event: InputEvent) -> void:
 		if curr_2d_scene != null and curr_gui_scene == null:
 			pause_game()
 
+func _process(_delta: float) -> void:
+	if Global.input_manager.get_change_ability_cannon():
+		cur_ability = Ability.CANNON
+	elif Global.input_manager.get_change_ability_castle():
+		cur_ability = Ability.CASTLE
+	elif Global.input_manager.get_change_ability_moat():
+		cur_ability = Ability.MOAT
+
 ## creates a new game and loads the scene
 func new_game() -> void:
 	print("new game")
