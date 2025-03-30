@@ -28,7 +28,7 @@ func _on_enemy_spawn_timer_timeout():
 	
 	# we can change this later to see if we want to spawn pawns away from the king
 	spawn_location.progress_ratio = randf()
-	while spawn_location.global_position.distance_to(king.global_position) < max_spawn_dist_from_king:
+	while spawn_location.global_position.distance_to(king.global_position) < min_spawn_dist_from_king:
 		spawn_location.progress_ratio = randf()
 	
 	#choose who to spawn
