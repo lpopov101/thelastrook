@@ -11,11 +11,11 @@ class_name powerup_spawner extends Node
 @export var min_y = 50
 @export var max_x = 1230
 @export var max_y = 670
-@export var try_spawn_interval_ms = 1000
+@export var try_spawn_interval_ms = 2000
 @export var time_before_spawn_possible_ms = 4000
-@export var powerup_time_to_live_ms = 5000
-@export var spawn_probability = 0.05
-@export var rook_dist_barrier = 200
+@export var powerup_time_to_live_ms = 2500
+@export var spawn_probability = 0.1
+@export var min_spawn_dist_to_rook = 350
 
 var last_spawn_time_ms: int = 0
 
@@ -45,7 +45,7 @@ func spawn_powerup() -> void:
         randi_range(min_x, max_x),
         randi_range(min_y, max_y)
     )
-    while powerup.global_position.distance_to(rook.global_position) < rook_dist_barrier:
+    while powerup.global_position.distance_to(rook.global_position) < min_spawn_dist_to_rook:
         powerup.global_position = Vector2(
             randi_range(min_x, max_x),
             randi_range(min_y, max_y)
