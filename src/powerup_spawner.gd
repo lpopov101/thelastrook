@@ -11,6 +11,7 @@ class_name powerup_spawner extends Node
 @export var max_y = 670
 @export var try_spawn_interval_ms = 1000
 @export var time_before_spawn_possible_ms = 4000
+@export var powerup_time_to_live_ms = 5000
 @export var spawn_probability = 0.05
 @export var rook_dist_barrier = 200
 
@@ -37,6 +38,7 @@ func spawn_powerup() -> void:
         powerup_scene = powerup_castle_scene
     var powerup: AbilityPowerup = powerup_scene.instantiate()
     powerup.spawn_time_ms = Time.get_ticks_msec()
+    powerup.time_to_live_ms = powerup_time_to_live_ms
     powerup.global_position = Vector2(
         randi_range(min_x, max_x),
         randi_range(min_y, max_y)
