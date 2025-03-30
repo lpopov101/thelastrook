@@ -7,6 +7,7 @@ var audio_manager: AudioManager
 const ENEMY_GROUP = "enemy"
 const ENEMY_ATTACK_GROUP = "enemyAttack"
 const PLAYER_ATTACK_GROUP = "playerAttack"
+const BOUND_GROUP = "bound"
 
 func _ready() -> void:
 	input_manager = InputManager.new()
