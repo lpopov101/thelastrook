@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bhvkg10se4qq2" path="res://src/rook.gd" id="1_ih210"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih210"]
-size = Vector2(40, 40)
+size = Vector2(26, 36)
 
 [node name="Rook" type="CharacterBody2D"]
 motion_mode = 1
@@ -14,4 +14,5 @@ script = ExtResource("1_ih210")
 texture = ExtResource("1_fdtut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ih210")

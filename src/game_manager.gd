@@ -8,9 +8,19 @@ const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 @export var gui: Control
 
 @export_group("Game State")
-@export var wave : int = 0
-@export var king_health : int = 0
-@export var dmg_amt : int = 20
+@export var wave: int = 0
+@export var king_health: int = 0
+@export var dmg_amt: int = 20
+
+enum Ability {MOAT, CANNON}
+
+var ability_name_map = {
+	Ability.MOAT: "Moat",
+	Ability.CANNON: "Cannon"
+}
+
+@export var cur_ability = Ability.MOAT
+var cur_ability_percent = 100.0;
 
 var curr_2d_scene
 var curr_gui_scene
