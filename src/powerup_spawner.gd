@@ -11,10 +11,10 @@ class_name powerup_spawner extends Node
 @export var min_y = 50
 @export var max_x = 1230
 @export var max_y = 670
-@export var try_spawn_interval_ms = 2000
+@export var try_spawn_interval_ms = 5000
 @export var time_before_spawn_possible_ms = 4000
-@export var powerup_time_to_live_ms = 2500
-@export var spawn_probability = 0.1
+@export var powerup_time_to_live_ms = 2000
+@export var spawn_probability = 0.25
 @export var min_spawn_dist_to_rook = 350
 
 var last_spawn_time_ms: int = 0
