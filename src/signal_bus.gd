@@ -7,6 +7,8 @@ signal MainMenuPressed
 signal ResumeGamePressed
 signal NewGamePressed
 signal ExitGamePressed
+signal OpenTutorial
+signal CloseTutorial
 
 #entity signals
 signal DamagedKing

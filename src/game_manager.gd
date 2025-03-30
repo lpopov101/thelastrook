@@ -81,6 +81,9 @@ func resume_game() -> void:
 	get_tree().paused = false
 	change_gui_scene(null)
 	
+func open_tutorial() -> void:
+	change_gui_scene(TutorialMenu.new_tutorial(), false, true)
+	
 func exit_to_main_menu() -> void:
 	get_tree().paused = false
 	change_2d_scene(null)
@@ -152,6 +155,8 @@ func _connect_signals() -> void:
 	#connect main menu signals
 	SigBus.connect("NewGamePressed", new_game)
 	SigBus.connect("ExitGamePressed", exit_game)
+	SigBus.connect("OpenTutorial", open_tutorial)
+	SigBus.connect("CloseTutorial", exit_to_main_menu)
 	
 	#connect paused menu signals
 	SigBus.connect("RestartPressed", new_game)
