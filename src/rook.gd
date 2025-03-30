@@ -1,5 +1,7 @@
 class_name Rook extends CharacterBody2D
 
+const CANNON_SHOT_SCENE: PackedScene = preload("uid://8joqcavelbm4") # cannon_shot.tscn
+
 @onready var moat_sprite: Sprite2D = $MoatSprite
 @onready var rook_collision_shape: CollisionShape2D = $RookCollisionShape
 @onready var moat_collision_shape: CollisionShape2D = $MoatCollisionShape
@@ -13,6 +15,8 @@ class_name Rook extends CharacterBody2D
 var moat_active = false
 
 @export var cannon_cooldown_ms = 500
+@export var cannon_offset = 30
+
 @export var castle_cooldown_ms = 3000
 
 var last_ability_time_ms = -10000
@@ -89,7 +93,13 @@ func handle_moat():
 func handle_cannon():
 	var cur_time = Time.get_ticks_msec()
 	if Global.input_manager.get_ability() and cur_time - last_ability_time_ms > cannon_cooldown_ms:
-		# todo: fire cannon
+		var cannon_shot = CANNON_SHOT_SCENE.instantiate()
+		var direction = cur_move_dir if cur_move_dir != Vector2.ZERO else Vector2(1, 0)
+		cannon_shot.global_position = global_position + (cannon_offset * direction)
+		cannon_shot.speed = speed * 3.0
+		cannon_shot.direction = direction
+		cannon_shot.rotate(direction.angle())
+		get_parent().add_child(cannon_shot)
 		last_ability_time_ms = cur_time
 	Global.game_manager.cur_ability_percent = float(cur_time - last_ability_time_ms) / float(cannon_cooldown_ms) * 100.0
 
