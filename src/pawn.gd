@@ -1,4 +1,5 @@
 class_name Pawn extends CharacterBody2D
+@onready var enemy_defeated_sound: AudioStream = preload("res://assets/enemydefeated.ogg")
 
 const PAWN = preload("res://scenes/pawn.tscn")
 @export var speed : float = 100.0 # default
@@ -23,8 +24,10 @@ func set_velocity_with_rotation(rotation: float):
 
 func on_body_entered(body: Node2D):
 	if (body.is_in_group(Global.PLAYER_ATTACK_GROUP)):
+		Global.audio_manager.play_sound(enemy_defeated_sound)
 		queue_free()
 
 func on_area_entered(area: Node2D):
 	if (area.is_in_group(Global.PLAYER_ATTACK_GROUP)):
+		Global.audio_manager.play_sound(enemy_defeated_sound)
 		queue_free()

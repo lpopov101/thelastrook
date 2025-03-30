@@ -2,6 +2,7 @@ extends Node
 
 var game_manager: GameManager
 var input_manager: InputManager
+var audio_manager: AudioManager
 
 const ENEMY_GROUP = "enemy"
 const ENEMY_ATTACK_GROUP = "enemyAttack"
