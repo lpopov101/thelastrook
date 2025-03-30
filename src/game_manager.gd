@@ -3,6 +3,8 @@ extends Node
 
 const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 
+@onready var king_hit_sound: AudioStream = preload("res://assets/king_hit.ogg")
+
 @export_group("Scene")
 @export var world_2d: Node2D
 @export var gui: Control
@@ -90,6 +92,7 @@ func exit_game() -> void:
 	
 func king_damaged() -> void:
 	king_health = max(king_health - dmg_amt, 0)
+	Global.audio_manager.play_sound(king_hit_sound, false, 10)
 	if king_health == 0:
 		print(Global.game_manager)
 		SigBus.GameOver.emit()

@@ -5,6 +5,8 @@ class_name powerup_spawner extends Node
 @onready var powerup_castle_scene: PackedScene = preload("res://scenes/powerup_castle.tscn")
 @onready var rook: Rook = $"../Rook"
 
+@onready var spawn_sound: AudioStream = preload("res://assets/powerup_spawn.ogg")
+
 @export var min_x = 50
 @export var min_y = 50
 @export var max_x = 1230
@@ -49,3 +51,4 @@ func spawn_powerup() -> void:
             randi_range(min_y, max_y)
         )
     get_parent().add_child(powerup)
+    Global.audio_manager.play_sound(spawn_sound, false, 8)
