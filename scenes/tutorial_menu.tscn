@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://crpexolkbf665"]
+[gd_scene load_steps=4 format=3 uid="uid://dvsoc1r311f87"]
 
-[ext_resource type="Script" uid="uid://bm4vmn4y7aq8u" path="res://src/tutorial_menu.gd" id="1_d0cyn"]
+[ext_resource type="Script" path="res://src/tutorial_menu.gd" id="1_d0cyn"]
 [ext_resource type="StyleBox" uid="uid://q323yqe6difc" path="res://resources/menu_button_normal.tres" id="1_n4abv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maro1"]
@@ -81,28 +81,28 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
-text = "[WASD] - Movement"
-horizontal_alignment = 1
-
-[node name="Ability" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
-theme_override_font_sizes/font_size = 24
-text = "[SPACE] - Use Ability"
+text = "[WASD]/[Arrows]/[LS]/[D-Pad] - Movement"
 horizontal_alignment = 1
 
 [node name="SpeedUp" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
-text = "[Shift] - Speed Up"
+text = "[Shift]/[A Button] - Speed Up"
 horizontal_alignment = 1
 
 [node name="SlowDown" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
-text = "[CTRL] - Slow Down"
+text = "[CTRL]/[B Button] - Slow Down"
+horizontal_alignment = 1
+
+[node name="Ability" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
+theme_override_font_sizes/font_size = 24
+text = "[SPACE]/[X Button] - Use Ability"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
