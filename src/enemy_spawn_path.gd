@@ -1,4 +1,4 @@
-class_name PawnSpawnPath extends Path2D
+class_name EnemySpawnPath extends Path2D
 
 @export var camera_path : NodePath
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dngcvsd6tnl48"]
+
+[ext_resource type="Script" uid="uid://cuoowp6t8nymu" path="res://src/queen.gd" id="1_o0ch0"]
+[ext_resource type="Texture2D" uid="uid://c3k3toksfgeyv" path="res://assets/Queen-Enemy.png" id="2_e14lb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e14lb"]
+size = Vector2(40, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0ch0"]
+size = Vector2(29, 42)
+
+[node name="Queen" type="CharacterBody2D" groups=["enemy", "enemyAttack"]]
+script = ExtResource("1_o0ch0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_e14lb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_e14lb")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_o0ch0")
