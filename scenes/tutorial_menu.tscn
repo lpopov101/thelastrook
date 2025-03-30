@@ -45,51 +45,71 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_maro1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Tutorial" type="Label" parent="PanelContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
+theme_override_font_sizes/font_size = 64
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
+theme_override_font_sizes/font_size = 24
+text = "Welcome to The Last Rook! 
+
+You, a rook, are the final defender of the king. Waves of enemy pieces are coming to kill your liege lord. Defend him by blocking enemies and gathering powerup abilities!"
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 64
 text = "Controls"
 horizontal_alignment = 1
 
-[node name="Movement" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Movement" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
 text = "[WASD] - Movement"
 horizontal_alignment = 1
 
-[node name="Ability" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Ability" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
 text = "[SPACE] - Use Ability"
 horizontal_alignment = 1
 
-[node name="SpeedUp" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="SpeedUp" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
 text = "[Shift] - Speed Up"
 horizontal_alignment = 1
 
-[node name="SlowDown" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="SlowDown" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
 text = "[CTRL] - Slow Down"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
 theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
@@ -97,7 +117,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("1_n4abv")
 text = "Cancel"
 
-[node name="Play" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Play" type="Button" parent="PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
 theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
@@ -106,5 +126,5 @@ theme_override_styles/normal = ExtResource("1_n4abv")
 text = "Play
 "
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
