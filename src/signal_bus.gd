@@ -8,8 +8,9 @@ signal ResumeGamePressed
 signal NewGamePressed
 signal ExitGamePressed
 
-#enetity signals
+#entity signals
 signal DamagedKing
+signal KingPosition(position : Vector2)
 
 #game state signals
 signal WaveComplete
