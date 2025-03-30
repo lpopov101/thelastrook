@@ -9,11 +9,6 @@ signal resume_game_pressed
 
 static func new_scene() -> PauseMenu:
 	return PAUSE_MENU.instantiate()
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Escape"):
-		print(1)
-		SigBus.ResumeGamePressed.emit()
 		
 
 func _on_restart_btn_pressed() -> void:
