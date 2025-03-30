@@ -13,6 +13,7 @@ signal CloseTutorial
 #entity signals
 signal DamagedKing
 signal KingPosition(position : Vector2)
+signal PawnHitBound(pawn_position : Vector2)
 
 #game state signals
 signal WaveComplete

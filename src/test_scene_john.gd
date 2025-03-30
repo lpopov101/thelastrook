@@ -12,6 +12,7 @@ enum SpawnableEnemyTypes{
 }
 
 func _ready():
+	SigBus.PawnHitBound.connect(_on_pawn_hit_bound)
 	enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 	enemy_spawn_timer.start()
 
@@ -64,23 +65,20 @@ func _spawn_pawn_at_position(spawn_location: PathFollow2D):
 
 	# spawn the pawn
 	add_child(pawn)
-	
-func _spawn_bishop_at_position(pawn_spawn_location) -> void:
-	#create bishop
-	var new_bishop = Bishop.new_bishop()
-	
-	#set bishop position
-	new_bishop.position = pawn_spawn_location.position
-	
-	#add to tree
-	add_child(new_bishop)
 
-func _spawn_piece_at_location(new_piece, pawn_spawn_location) -> void:
+func _spawn_piece_at_position(new_piece, spawn_position: Vector2) -> void:
 	#set piece position
-	new_piece.position = pawn_spawn_location.position
+	new_piece.position = spawn_position
 	
 	#add to tree
 	add_child(new_piece)
+
+func _spawn_piece_at_location(new_piece, spawn_location: PathFollow2D) -> void:
+	_spawn_piece_at_position(new_piece, spawn_location.position)
+	
+func _on_pawn_hit_bound(pawn_position: Vector2) -> void:
+	var new_queen = Queen.new_queen()
+	_spawn_piece_at_position(new_queen, pawn_position)
 
 static func new_scene() -> JohnTest:
 	var new_s = TEST_SCENE.instantiate()
