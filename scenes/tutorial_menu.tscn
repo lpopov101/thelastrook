@@ -84,11 +84,18 @@ theme_override_font_sizes/font_size = 24
 text = "[WASD]/[Arrows]/[LS]/[D-Pad] - Movement"
 horizontal_alignment = 1
 
+[node name="Ability" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
+theme_override_font_sizes/font_size = 24
+text = "[SPACE]/[A Button] - Use Ability"
+horizontal_alignment = 1
+
 [node name="SpeedUp" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
-text = "[Shift]/[A Button] - Speed Up"
+text = "[Shift]/[X Button] - Speed Up"
 horizontal_alignment = 1
 
 [node name="SlowDown" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
@@ -96,13 +103,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
 theme_override_font_sizes/font_size = 24
 text = "[CTRL]/[B Button] - Slow Down"
-horizontal_alignment = 1
-
-[node name="Ability" type="Label" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.933333, 0.933333, 0.886275, 1)
-theme_override_font_sizes/font_size = 24
-text = "[SPACE]/[X Button] - Use Ability"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/VBoxContainer"]
