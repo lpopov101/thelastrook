@@ -12,5 +12,5 @@ signal ExitGamePressed
 signal DamagedKing
 
 #game state signals
-signal WaveChanged(new_wave)
+signal WaveComplete
 signal GameOver

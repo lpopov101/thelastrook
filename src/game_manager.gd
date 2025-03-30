@@ -74,6 +74,9 @@ func king_damaged() -> void:
 		print(Global.game_manager)
 		SigBus.GameOver.emit()
 		
+func update_wave() -> void:
+	wave += 1
+		
 func game_over() -> void:
 	print("Game Over")
 	change_gui_scene(GameOverMenu.new_scene())
@@ -132,5 +135,9 @@ func _connect_signals() -> void:
 	SigBus.connect("MainMenuPressed", exit_to_main_menu)
 	SigBus.connect("ResumeGamePressed", resume_game)
 	
+	#connect entity signals
 	SigBus.connect("DamagedKing", king_damaged)
+	
+	#connect game stat signals
 	SigBus.connect("GameOver", game_over)
+	SigBus.connect("WaveComplete", update_wave)
