@@ -36,18 +36,10 @@ func change_direction() -> void:
 	dx = cos(direction * (PI / 4))
 	dy = sin(direction * (PI / 4))
 
-func take_damage(damage: int):
-	var cur_time = Time.get_ticks_msec()
-	if cur_time - LAST_DAMAGE_TIME > INVINCIBILITY_MS:
-		HEALTH -= damage
-		print("King took damage: ", damage, " HP left: ", HEALTH)
-		LAST_DAMAGE_TIME = cur_time
-
-
 func _on_king_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group(Global.ENEMY_ATTACK_GROUP):
 		SigBus.DamagedKing.emit()
-
+		body.queue_free()
 
 func _on_position_timer_timeout() -> void:
 	SigBus.KingPosition.emit(position)
