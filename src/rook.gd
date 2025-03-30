@@ -1,5 +1,9 @@
 class_name Rook extends CharacterBody2D
 
+@onready var moat_sprite: Sprite2D = $MoatSprite
+@onready var rook_collision_shape: CollisionShape2D = $RookCollisionShape
+@onready var moat_collision_shape: CollisionShape2D = $MoatCollisionShape
+
 @export var speed = 300
 @export var boost_mult = 1.5
 @export var brake_mult = 0.5
@@ -12,7 +16,11 @@ var moat_active = false
 
 var last_ability_time_ms = -10000
 var cur_move_dir = Vector2.ZERO
-var init_scale = scale
+
+func _ready() -> void:
+	moat_sprite.visible = false
+	moat_collision_shape.disabled = true
+	rook_collision_shape.disabled = false
 
 func _physics_process(_delta: float):
 	handle_abilities()
@@ -59,11 +67,17 @@ func handle_moat():
 	var cur_time = Time.get_ticks_msec()
 	if not moat_active and Global.input_manager.get_ability() and cur_time - last_ability_time_ms > moat_cooldown_ms:
 		moat_active = true
-		scale = 2 * init_scale
+		moat_sprite.visible = true
+		moat_collision_shape.disabled = false
+		rook_collision_shape.disabled = true
 		last_ability_time_ms = cur_time
-	elif moat_active and cur_time - last_ability_time_ms > moat_duration_ms:
-		moat_active = false
-		scale = init_scale
+	elif moat_active:
+		moat_sprite.self_modulate.a = 1.0 - pow(float(cur_time - last_ability_time_ms) / float(moat_duration_ms), 2)
+		if cur_time - last_ability_time_ms > moat_duration_ms:
+			moat_active = false
+			moat_sprite.visible = false
+			moat_collision_shape.disabled = true
+			rook_collision_shape.disabled = false
 
 	Global.game_manager.cur_ability_percent = float(cur_time - last_ability_time_ms) / float(moat_cooldown_ms) * 100.0
 
