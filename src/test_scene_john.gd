@@ -6,7 +6,7 @@ const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var king: KingCharacter = $"King"
 
-@export var max_spawn_dist_from_king = 250
+@export var min_spawn_dist_from_king = 250
 
 enum SpawnableEnemyTypes {
 	PAWN,

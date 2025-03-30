@@ -2,12 +2,14 @@ class_name Queen
 extends CharacterBody2D
 
 const QUEEN = preload("res://scenes/queen.tscn")
-@export var speed : float = 500.0 # default
-@export var straight_line_movement_probability : float = 0.5 # default
+@export var speed: float = 500.0 # default
+@export var straight_line_movement_probability: float = 0.5 # default
 
-var target : Vector2 = Vector2.ZERO
-var y_direction : int = -1
-var x_direction : int = 1
+@onready var enemy_defeated_sound: AudioStream = preload("res://assets/enemydefeated.ogg")
+
+var target: Vector2 = Vector2.ZERO
+var y_direction: int = -1
+var x_direction: int = 1
 
 @onready var hitbox = $Hitbox
 
@@ -32,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 		
 
-func _update_target(pos : Vector2) -> void:
+func _update_target(pos: Vector2) -> void:
 	target = pos
 
 	var y_dist = abs(target.y - position.y)
@@ -62,10 +64,11 @@ func _update_target(pos : Vector2) -> void:
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group(Global.PLAYER_ATTACK_GROUP):
+		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
 		
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group(Global.PLAYER_ATTACK_GROUP):
+		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
-		
