@@ -1,6 +1,11 @@
 class_name Pawn extends CharacterBody2D
 
+const PAWN = preload("res://scenes/pawn.tscn")
 @export var speed : float = 100.0 # default
+
+
+static func new_pawn() -> Pawn:
+	return PAWN.instantiate()
 
 # _init runs on instantiation. _ready runs on node addition to tree :)
 func _init():
