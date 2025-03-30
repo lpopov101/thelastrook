@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b72ih4n5wdw7c"]
+[gd_scene load_steps=16 format=4 uid="uid://b72ih4n5wdw7c"]
 
 [ext_resource type="Script" uid="uid://cue8v1hr04pm7" path="res://src/test_scene_john.gd" id="1_g86ge"]
 [ext_resource type="PackedScene" uid="uid://dw57axs3ewcec" path="res://scenes/rook.tscn" id="2_7000y"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="5_g0d5q"]
 [ext_resource type="PackedScene" uid="uid://c6y4mf5qugen0" path="res://scenes/king_health_display.tscn" id="6_by1eb"]
 [ext_resource type="PackedScene" uid="uid://l41y2ti8u02a" path="res://scenes/wave_timer.tscn" id="7_essfb"]
-[ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/pawn_spawn_path.gd" id="8_r64sa"]
+[ext_resource type="Script" path="res://src/pawn_spawn_path.gd" id="8_r64sa"]
+[ext_resource type="PackedScene" uid="uid://cqylxxylroq3b" path="res://scenes/powerup_cannon.tscn" id="9_4yk81"]
+[ext_resource type="PackedScene" uid="uid://b820t3uos7l46" path="res://scenes/powerup_castle.tscn" id="10_vb47y"]
+[ext_resource type="PackedScene" uid="uid://c71st44uxfvbx" path="res://scenes/powerup_moat.tscn" id="11_uc50o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r64sa"]
 texture = ExtResource("3_4r2nf")
@@ -662,3 +665,12 @@ script = ExtResource("8_r64sa")
 camera_path = NodePath("../Camera2D")
 
 [node name="PawnSpawnLocation" type="PathFollow2D" parent="PawnSpawnPath"]
+
+[node name="CannonPowerUp" parent="." instance=ExtResource("9_4yk81")]
+position = Vector2(245, 179)
+
+[node name="CastlePowerUp" parent="." instance=ExtResource("10_vb47y")]
+position = Vector2(143, 523)
+
+[node name="MoatPowerUp" parent="." instance=ExtResource("11_uc50o")]
+position = Vector2(1006, 577)

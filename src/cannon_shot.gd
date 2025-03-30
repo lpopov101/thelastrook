@@ -11,9 +11,8 @@ func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
 func on_body_entered(body: Node) -> void:
-	print("Cannon shot hit: ", body.name)
-	# TODO: damage logic
-	queue_free()
+	if body is not Rook:
+		queue_free()
 
 func on_area_entered(area: Area2D) -> void:
 	print("Cannon shot hit area: ", area.name)

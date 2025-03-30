@@ -2,7 +2,7 @@ class_name JohnTest
 extends Node2D
 
 const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
-const PAWN_SCENE : PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
+const PAWN_SCENE: PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
 
 @onready var pawn_spawn_timer: Timer = $PawnSpawnTimer
 

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b820t3uos7l46"]
+
+[ext_resource type="Script" uid="uid://dk4ew15ewnw48" path="res://src/ability_powerup.gd" id="1_rhrp1"]
+[ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="2_rhrp1"]
+[ext_resource type="Texture2D" uid="uid://cxxf5fkefr7pg" path="res://assets/orb.png" id="3_xiwkj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ttf0"]
+radius = 30.0
+
+[node name="CastlePowerUp" type="Area2D"]
+script = ExtResource("1_rhrp1")
+ability = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_rhrp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3ttf0")
+
+[node name="Orb" type="Sprite2D" parent="."]
+self_modulate = Color(0.689614, 0.407743, 0, 0.392157)
+position = Vector2(1, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_xiwkj")
