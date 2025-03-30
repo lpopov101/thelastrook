@@ -1,5 +1,7 @@
 class_name CannonShot extends Area2D
 
+@onready var hit_sound: AudioStream = preload("res://assets/enemydefeateddeep.ogg")
+
 var speed = 100
 var direction: Vector2 = Vector2.ZERO
 
@@ -12,9 +14,10 @@ func _physics_process(delta: float) -> void:
 
 func on_body_entered(body: Node) -> void:
 	if body is not Rook:
+		Global.audio_manager.play_sound(hit_sound, false, 2)
 		queue_free()
 
 func on_area_entered(area: Area2D) -> void:
 	print("Cannon shot hit area: ", area.name)
-	# TODO: damage logic
+	Global.audio_manager.play_sound(hit_sound, false, 2)
 	queue_free()

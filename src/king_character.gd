@@ -7,6 +7,7 @@ class_name KingCharacter extends CharacterBody2D
 var LAST_DAMAGE_TIME = - INVINCIBILITY_MS
 var LAST_CHANGE_DIR_TIME = - CHANGE_DIR_MS
 
+
 # Other not important stuff
 var direction = 0
 var pi = 3 * acos(.5)
@@ -33,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 func change_direction() -> void:
 	direction = randi() % 8
 	dx = cos(direction * (PI / 4))
-	dy = sin(direction * (PI / 4)) 
+	dy = sin(direction * (PI / 4))
 
 func take_damage(damage: int):
 	var cur_time = Time.get_ticks_msec()

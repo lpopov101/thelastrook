@@ -6,6 +6,10 @@ const CANNON_SHOT_SCENE: PackedScene = preload("uid://8joqcavelbm4") # cannon_sh
 @onready var rook_collision_shape: CollisionShape2D = $RookCollisionShape
 @onready var moat_collision_shape: CollisionShape2D = $MoatCollisionShape
 
+@onready var moat_sound: AudioStream = preload("res://assets/moat_activated.ogg")
+@onready var cannon_sound: AudioStream = preload("res://assets/cannon_fired.ogg")
+@onready var castle_sound: AudioStream = preload("res://assets/castling.ogg")
+
 @export var speed = 300
 @export var boost_mult = 1.5
 @export var brake_mult = 0.5
@@ -90,6 +94,7 @@ func handle_moat():
 		moat_sprite.visible = true
 		moat_collision_shape.disabled = false
 		rook_collision_shape.disabled = true
+		Global.audio_manager.play_sound(moat_sound, false, 5)
 		last_ability_time_ms = cur_time
 	elif moat_active:
 		moat_sprite.self_modulate.a = 1.0 - pow(float(cur_time - last_ability_time_ms) / float(moat_duration_ms), 2)
@@ -111,6 +116,7 @@ func handle_cannon():
 		cannon_shot.direction = direction
 		cannon_shot.rotate(direction.angle())
 		get_parent().add_child(cannon_shot)
+		Global.audio_manager.play_sound(cannon_sound, false, 6)
 		last_ability_time_ms = cur_time
 	Global.game_manager.cur_ability_percent = float(cur_time - last_ability_time_ms) / float(cannon_cooldown_ms) * 100.0
 
@@ -122,5 +128,6 @@ func handle_castle():
 		global_position = Vector2(-1000, -1000)
 		king.global_position = temp_rook
 		global_position = temp_king
+		Global.audio_manager.play_sound(castle_sound, false, 5)
 		last_ability_time_ms = cur_time
 	Global.game_manager.cur_ability_percent = float(cur_time - last_ability_time_ms) / float(castle_cooldown_ms) * 100.0
