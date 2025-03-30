@@ -7,8 +7,10 @@ const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 @export var world_2d: Node2D
 @export var gui: Control
 
-@export_group("Wave")
-@export var wave: int = 0
+@export_group("Game State")
+@export var wave : int = 0
+@export var king_health : int = 0
+@export var dmg_amt : int = 20
 
 var curr_2d_scene
 var curr_gui_scene
@@ -29,9 +31,18 @@ func _input(event: InputEvent) -> void:
 ## creates a new game and loads the scene
 func new_game() -> void:
 	print("new game")
+	#Pause scenes except for menus
 	if get_tree().paused:
 		get_tree().paused = false
+		
+	#reset game info
+	wave = 1
+	king_health = 100
+	
+	#create a new game scene
 	var new_game_scene = NEW_GAME_SCENE.instantiate()
+	
+	#add new game to tree
 	change_2d_scene(new_game_scene)
 	change_gui_scene(null, false, true)
 
@@ -56,6 +67,15 @@ func exit_to_main_menu() -> void:
 func exit_game() -> void:
 	print("exit")
 	get_tree().quit()
+	
+func king_damaged() -> void:
+	king_health = max(king_health - dmg_amt, 0)
+	if king_health == 0:
+		print(Global.game_manager)
+		SigBus.GameOver.emit()
+		
+func game_over() -> void:
+	print("Game Over")
 
 	
 ## Changes the GUI scene.
@@ -109,3 +129,5 @@ func _connect_signals() -> void:
 	SigBus.connect("MainMenuPressed", exit_to_main_menu)
 	SigBus.connect("ResumeGamePressed", resume_game)
 	
+	SigBus.connect("DamagedKing", king_damaged)
+	SigBus.connect("GameOver", game_over)

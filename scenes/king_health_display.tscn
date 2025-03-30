@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6y4mf5qugen0"]
+
+[ext_resource type="Script" uid="uid://bxcq16yquf4sw" path="res://src/king_health_display.gd" id="1_j7huw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7huw"]
+bg_color = Color(0.321569, 0.321569, 0.321569, 0)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mirsr"]
+bg_color = Color(0.930612, 0.207966, 0.213791, 1)
+skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6vbm"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.849315, 0.506096, 0.102801, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="KingHealthDisplay" type="CanvasLayer"]
+script = ExtResource("1_j7huw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 4.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 27.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "King's Health"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_j7huw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mirsr")
+value = 100.0
+
+[node name="Wave" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_l6vbm")
+text = "Wave: 1"

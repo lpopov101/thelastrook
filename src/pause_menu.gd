@@ -19,4 +19,4 @@ func _on_main_menu_btn_pressed() -> void:
 
 
 func _on_resume_btn_pressed() -> void:
-	SigBus.ResumeGamePressed
+	SigBus.ResumeGamePressed.emit()
