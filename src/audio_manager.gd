@@ -11,11 +11,8 @@ func play_sound(sound: AudioStream, loop: bool = false, volume: int = -10) -> Au
 		audio_stream_player.loop = true
 	else:
 		audio_stream_player.finished.connect(func():
-			on_audio_finished(audio_stream_player)
+			audio_stream_player.queue_free()
 		)
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	return audio_stream_player
-
-func on_audio_finished(audio_stream_player: AudioStreamPlayer) -> void:
-	audio_stream_player.queue_free()

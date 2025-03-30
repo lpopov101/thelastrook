@@ -21,6 +21,7 @@ var moat_active = false
 @export var castle_cooldown_ms = 5000
 
 var last_ability_time_ms = -10000
+var last_ability = Global.game_manager.cur_ability
 var cur_move_dir = Vector2.ZERO
 
 @onready var king: KingCharacter = $"../King"
@@ -73,6 +74,12 @@ func process_collisions():
 		collision_idx += 1
 
 func handle_abilities():
+	if Global.game_manager.cur_ability != last_ability:
+		moat_sprite.visible = false
+		moat_collision_shape.disabled = true
+		rook_collision_shape.disabled = false
+		last_ability_time_ms = 0
+		last_ability = Global.game_manager.cur_ability
 	if Global.game_manager.cur_ability == GameManager.Ability.MOAT:
 		handle_moat()
 	elif Global.game_manager.cur_ability == GameManager.Ability.CANNON:
