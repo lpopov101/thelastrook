@@ -9,3 +9,11 @@
 Backup*/
 UpgradeLog*.htm
 UpgradeLog*.XML
+
+*.exe
+*.pck
+*.zip
+*_x86_64/
+
+
+export_presets.cfg
