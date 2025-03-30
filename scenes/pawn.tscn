@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://mmkclxn06vhw"]
+
+[ext_resource type="Texture2D" uid="uid://dpkj5sl725dly" path="res://assets/Pawn-Enemy.png" id="1_bab8k"]
+[ext_resource type="Script" uid="uid://d2gp46astgfe8" path="res://src/pawn.gd" id="1_ccfo0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccfo0"]
+radius = 13.0
+height = 38.0
+
+[node name="Pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ccfo0")
+metadata/_edit_group_ = true
+
+[node name="PawnShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_ccfo0")
+
+[node name="PawnSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_bab8k")
