@@ -10,15 +10,15 @@ const CANNON_SHOT_SCENE: PackedScene = preload("uid://8joqcavelbm4") # cannon_sh
 @export var boost_mult = 1.5
 @export var brake_mult = 0.5
 
-@export var moat_cooldown_ms = 5000
-@export var moat_duration_ms = 2000
+@export var moat_cooldown_ms = 4000
+@export var moat_duration_ms = 2500
 var moat_active = false
 
 @export var cannon_cooldown_ms = 500
 @export var cannon_offset = 30
 @export var cannon_shot_speed_mult = 3.0
 
-@export var castle_cooldown_ms = 3000
+@export var castle_cooldown_ms = 5000
 
 var last_ability_time_ms = -10000
 var cur_move_dir = Vector2.ZERO
@@ -35,6 +35,9 @@ func _ready() -> void:
 func _physics_process(_delta: float):
 	handle_abilities()
 	handle_movement()
+
+func _process(delta: float) -> void:
+	moat_sprite.rotate(delta * 2)
 
 func handle_movement():
 	var input_move_dir = Global.input_manager.get_just_pressed_move_dir()

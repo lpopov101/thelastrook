@@ -1,9 +1,9 @@
 extends Node2D
 
-const PAWN_SCENE : PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
+const PAWN_SCENE: PackedScene = preload("uid://mmkclxn06vhw") # pawn.tscn
 
-func _on_pawn_spawn_timer_timeout():	
-	var pawn_spawn_location : PathFollow2D = get_node_or_null("PawnSpawnPath/PawnSpawnLocation")
+func _on_pawn_spawn_timer_timeout():
+	var pawn_spawn_location: PathFollow2D = get_node_or_null("PawnSpawnPath/PawnSpawnLocation")
 	
 	if not pawn_spawn_location:
 		print("Error! Pawn spawn location couldn't be gotten!")
@@ -15,7 +15,7 @@ func _on_pawn_spawn_timer_timeout():
 
 
 func _spawn_pawn_at_position(pawn_spawn_location: PathFollow2D):
-	var pawn : Pawn = PAWN_SCENE.instantiate()
+	var pawn: Pawn = PAWN_SCENE.instantiate()
 	pawn.position = pawn_spawn_location.position
 
 	# set pawn's direction perpendicular to the path direction.

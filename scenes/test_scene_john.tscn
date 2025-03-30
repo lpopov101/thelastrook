@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b72ih4n5wdw7c"]
+[gd_scene load_steps=16 format=4 uid="uid://b72ih4n5wdw7c"]
 
 [ext_resource type="Script" uid="uid://cue8v1hr04pm7" path="res://src/test_scene_john.gd" id="1_g86ge"]
 [ext_resource type="PackedScene" uid="uid://dw57axs3ewcec" path="res://scenes/rook.tscn" id="2_7000y"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/pawn_spawn_path.gd" id="8_r64sa"]
 [ext_resource type="AudioStream" uid="uid://dxqyp8msjgk63" path="res://assets/bbgj8mainthemeloop.ogg" id="9_4r2nf"]
 [ext_resource type="AudioStream" uid="uid://rm3ham1lig6v" path="res://assets/enemydefeated.ogg" id="10_6qqen"]
+[ext_resource type="PackedScene" uid="uid://cqylxxylroq3b" path="res://scenes/powerup_cannon.tscn" id="9_4yk81"]
+[ext_resource type="PackedScene" uid="uid://b820t3uos7l46" path="res://scenes/powerup_castle.tscn" id="10_vb47y"]
+[ext_resource type="PackedScene" uid="uid://c71st44uxfvbx" path="res://scenes/powerup_moat.tscn" id="11_uc50o"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_cannon.tscn" id="9_4yk81"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_castle.tscn" id="10_vb47y"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_moat.tscn" id="11_uc50o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r64sa"]
 texture = ExtResource("3_4r2nf")
@@ -613,6 +619,7 @@ position = Vector2(698, 335)
 
 [node name="King" parent="." instance=ExtResource("5_g0d5q")]
 position = Vector2(618, 340)
+scale = Vector2(2, 2)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("5_by1eb")
@@ -673,3 +680,12 @@ autoplay = true
 
 [node name="DefeatBasicEnemySFX" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_6qqen")
+
+[node name="CannonPowerUp" parent="." instance=ExtResource("9_4yk81")]
+position = Vector2(245, 179)
+
+[node name="CastlePowerUp" parent="." instance=ExtResource("10_vb47y")]
+position = Vector2(143, 523)
+
+[node name="MoatPowerUp" parent="." instance=ExtResource("11_uc50o")]
+position = Vector2(1006, 577)
