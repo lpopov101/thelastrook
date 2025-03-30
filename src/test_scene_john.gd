@@ -35,13 +35,13 @@ func _on_pawn_spawn_timer_timeout():
 			
 	
 	#increase timer if wave has increased
-	if Global.game_manager.wave > 3:
+	if Global.game_manager.wave > 1:
 		$PawnSpawnTimer.wait_time = 4
-	elif Global.game_manager.wave > 6:
+	elif Global.game_manager.wave > 2:
 		$PawnSpawnTimer.wait_time = 4
-	elif Global.game_manager.wave > 9:
+	elif Global.game_manager.wave > 4:
 		$PawnSpawnTimer.wait_time = 2
-	elif Global.game_manager.wave > 12:
+	elif Global.game_manager.wave > 6:
 		$PawnSpawnTimer.wait_time = 1
 
 func _spawn_pawn_at_position(pawn_spawn_location: PathFollow2D):
