@@ -76,6 +76,9 @@ func king_damaged() -> void:
 		
 func game_over() -> void:
 	print("Game Over")
+	change_gui_scene(GameOverMenu.new_scene())
+	
+	get_tree().paused = true
 
 	
 ## Changes the GUI scene.
