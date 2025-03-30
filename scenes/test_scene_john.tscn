@@ -9,9 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://l41y2ti8u02a" path="res://scenes/wave_timer.tscn" id="7_essfb"]
 
 [ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/enemy_spawn_path.gd" id="8_r64sa"]
+[ext_resource type="AudioStream" uid="uid://dxqyp8msjgk63" path="res://assets/bbgj8mainthemeloop.ogg" id="9_4r2nf"]
+[ext_resource type="AudioStream" uid="uid://rm3ham1lig6v" path="res://assets/enemydefeated.ogg" id="10_6qqen"]
 [ext_resource type="PackedScene" uid="uid://cqylxxylroq3b" path="res://scenes/powerup_cannon.tscn" id="9_4yk81"]
 [ext_resource type="PackedScene" uid="uid://b820t3uos7l46" path="res://scenes/powerup_castle.tscn" id="10_vb47y"]
 [ext_resource type="PackedScene" uid="uid://c71st44uxfvbx" path="res://scenes/powerup_moat.tscn" id="11_uc50o"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_cannon.tscn" id="9_4yk81"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_castle.tscn" id="10_vb47y"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_moat.tscn" id="11_uc50o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r64sa"]
 texture = ExtResource("3_4r2nf")
@@ -666,6 +671,16 @@ script = ExtResource("8_r64sa")
 camera_path = NodePath("../Camera2D")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_4r2nf")
+volume_db = -1.874
+autoplay = true
+
+[node name="DefeatBasicEnemySFX" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_6qqen")
 
 [node name="CannonPowerUp" parent="." instance=ExtResource("9_4yk81")]
 position = Vector2(245, 179)
