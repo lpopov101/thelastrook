@@ -611,6 +611,7 @@ position = Vector2(698, 335)
 
 [node name="King" parent="." instance=ExtResource("5_g0d5q")]
 position = Vector2(618, 340)
+scale = Vector2(2, 2)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("5_by1eb")
