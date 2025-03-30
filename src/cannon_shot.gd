@@ -13,11 +13,11 @@ func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
 func on_body_entered(body: Node) -> void:
-	if body is not Rook:
+	if body.is_in_group(Global.ENEMY_GROUP):
 		Global.audio_manager.play_sound(hit_sound, false, 2)
 		queue_free()
 
 func on_area_entered(area: Area2D) -> void:
-	print("Cannon shot hit area: ", area.name)
-	Global.audio_manager.play_sound(hit_sound, false, 2)
+	if area.is_in_group(Global.ENEMY_GROUP):
+		Global.audio_manager.play_sound(hit_sound, false, 2)
 	queue_free()

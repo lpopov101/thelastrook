@@ -4,7 +4,7 @@ class_name Pawn extends CharacterBody2D
 const PAWN = preload("res://scenes/pawn.tscn")
 @export var speed : float = 100.0 # default
 
-var spawnBoundHit : bool = false
+@onready var pawnPromotionInvincibilityTimer : Timer = $PawnPromotionInvincibilityTimer
 
 static func new_pawn() -> Pawn:
 	return PAWN.instantiate()
@@ -32,8 +32,6 @@ func on_area_entered(area: Node2D):
 	if (area.is_in_group(Global.PLAYER_ATTACK_GROUP)):
 		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
-	elif (area.is_in_group(Global.BOUND_GROUP) and spawnBoundHit):
+	elif (area.is_in_group(Global.BOUND_GROUP) and pawnPromotionInvincibilityTimer.is_stopped()):
 		SigBus.PawnHitBound.emit(position)
 		queue_free()
-	elif (area.is_in_group(Global.BOUND_GROUP)):
-		spawnBoundHit = true
