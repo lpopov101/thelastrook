@@ -59,7 +59,6 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_myx47")
 text = "Exit to Main Menu"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
