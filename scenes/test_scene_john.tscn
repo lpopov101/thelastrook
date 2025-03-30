@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b72ih4n5wdw7c"]
+[gd_scene load_steps=13 format=4 uid="uid://b72ih4n5wdw7c"]
 
 [ext_resource type="Script" uid="uid://cue8v1hr04pm7" path="res://src/test_scene_john.gd" id="1_g86ge"]
 [ext_resource type="PackedScene" uid="uid://dw57axs3ewcec" path="res://scenes/rook.tscn" id="2_7000y"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://b326kidl5usfr" path="res://src/input_manager.gd" id="5_by1eb"]
 [ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="5_g0d5q"]
 [ext_resource type="PackedScene" uid="uid://c6y4mf5qugen0" path="res://scenes/king_health_display.tscn" id="6_by1eb"]
-[ext_resource type="PackedScene" uid="uid://l41y2ti8u02a" path="res://scenes/wave_timer.tscn" id="7_essfb"]
+[ext_resource type="PackedScene" path="res://scenes/wave_timer.tscn" id="7_essfb"]
+[ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/pawn_spawn_path.gd" id="8_r64sa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3jw41"]
 texture = ExtResource("2_g86ge")
@@ -140,3 +141,15 @@ shape = SubResource("RectangleShape2D_g0d5q")
 [node name="KingHealthDisplay" parent="." instance=ExtResource("6_by1eb")]
 
 [node name="WaveTimer" parent="." instance=ExtResource("7_essfb")]
+
+[node name="PawnSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="PawnSpawnPath" type="Path2D" parent="."]
+script = ExtResource("8_r64sa")
+camera_path = NodePath("../Camera2D")
+
+[node name="PawnSpawnLocation" type="PathFollow2D" parent="PawnSpawnPath"]
