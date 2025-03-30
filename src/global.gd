@@ -11,3 +11,5 @@ const PLAYER_ATTACK_GROUP = "playerAttack"
 func _ready() -> void:
 	input_manager = InputManager.new()
 	add_child(input_manager)
+	audio_manager = AudioManager.new()
+	add_child(audio_manager)
