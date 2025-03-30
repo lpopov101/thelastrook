@@ -17,8 +17,9 @@ script = ExtResource("1_kukqi")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 0.15
 anchor_bottom = 1.0
-offset_left = -16.0
+offset_left = -22.0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_n87rw")
 
@@ -30,7 +31,7 @@ alignment = 1
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.823529, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "Game Paused"
 horizontal_alignment = 1
 
@@ -38,6 +39,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
 theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_myx47")
 text = "Resume"
 
@@ -45,6 +47,7 @@ text = "Resume"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
 theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_myx47")
 text = "Restart Game"
 
@@ -52,10 +55,11 @@ text = "Restart Game"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
 theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_myx47")
 text = "Exit to Main Menu"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
