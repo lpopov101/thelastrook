@@ -25,6 +25,8 @@ var cur_move_dir = Vector2.ZERO
 
 @onready var king: KingCharacter = $"../King"
 
+@onready var defeat_basic_enemy_sfx: AudioStreamPlayer = $"../Audio/DefeatBasicEnemySFX"
+
 func _ready() -> void:
 	moat_sprite.visible = false
 	moat_collision_shape.disabled = true
@@ -66,6 +68,8 @@ func process_collisions():
 			var collider = collision.get_collider()
 			if collider is KingCharacter:
 				cur_move_dir *= -1.0
+			if collider is Pawn:
+				defeat_basic_enemy_sfx.play()
 		collision_idx += 1
 
 func handle_abilities():
