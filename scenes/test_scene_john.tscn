@@ -98,10 +98,12 @@ tile_set = SubResource("TileSet_g0d5q")
 [node name="Rook" parent="." instance=ExtResource("2_7000y")]
 position = Vector2(253, 201)
 scale = Vector2(0.65, 0.65)
+motion_mode = 1
 
 [node name="King" parent="." instance=ExtResource("5_g0d5q")]
 position = Vector2(307, 200)
 scale = Vector2(0.65, 0.65)
+motion_mode = 1
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("5_by1eb")

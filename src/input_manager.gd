@@ -4,6 +4,7 @@ class_name InputManager extends Node
 @export var down_action = "down"
 @export var left_action = "left"
 @export var right_action = "right"
+@export var castle_action = "Castle"
 @export var boost_action = "boost"
 @export var brake_action = "brake"
 
@@ -36,3 +37,6 @@ func get_just_pressed_move_dir() -> Vector2:
 	if Input.is_action_just_pressed(right_action):
 		move_dir.x += 1
 	return move_dir
+
+func get_just_pressed_castle() -> bool:
+	return Input.is_action_just_pressed(castle_action)
