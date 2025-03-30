@@ -35,6 +35,20 @@ theme_override_font_sizes/font_size = 48
 text = "Game Over!"
 horizontal_alignment = 1
 
+[node name="WaveLabel2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.823529, 1)
+theme_override_font_sizes/font_size = 32
+text = "You made it to"
+horizontal_alignment = 1
+
+[node name="WaveLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.823529, 1)
+theme_override_font_sizes/font_size = 32
+text = "Wave: 1"
+horizontal_alignment = 1
+
 [node name="NewGameBtn" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)

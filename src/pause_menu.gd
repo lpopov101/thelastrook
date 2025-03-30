@@ -9,6 +9,7 @@ signal resume_game_pressed
 
 static func new_scene() -> PauseMenu:
 	return PAUSE_MENU.instantiate()
+		
 
 func _on_restart_btn_pressed() -> void:
 	SigBus.RestartPressed.emit()

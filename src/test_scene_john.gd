@@ -71,7 +71,8 @@ func _spawn_piece_at_position(new_piece, spawn_position: Vector2) -> void:
 	new_piece.position = spawn_position
 	
 	#add to tree
-	add_child(new_piece)
+	call_deferred("add_child", new_piece)
+	#add_child(new_piece)
 
 func _spawn_piece_at_location(new_piece, spawn_location: PathFollow2D) -> void:
 	_spawn_piece_at_position(new_piece, spawn_location.position)
