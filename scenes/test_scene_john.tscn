@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6y4mf5qugen0" path="res://scenes/king_health_display.tscn" id="6_by1eb"]
 [ext_resource type="PackedScene" uid="uid://l41y2ti8u02a" path="res://scenes/wave_timer.tscn" id="7_essfb"]
 [ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/enemy_spawn_path.gd" id="8_r64sa"]
-[ext_resource type="Script" path="res://src/powerup_spawner.gd" id="9_4r2nf"]
+[ext_resource type="Script" uid="uid://uowc8e46r6ui" path="res://src/powerup_spawner.gd" id="9_4r2nf"]
 [ext_resource type="AudioStream" uid="uid://dxqyp8msjgk63" path="res://assets/bbgj8mainthemeloop.ogg" id="9_4yk81"]
 [ext_resource type="Script" uid="uid://b3haw4ya8llsu" path="res://src/audio_manager.gd" id="11_4yk81"]
 
@@ -600,19 +600,19 @@ sources/0 = SubResource("TileSetAtlasSource_r64sa")
 size = Vector2(1323.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yk81"]
-size = Vector2(1325, 27)
+size = Vector2(1275.23, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb47y"]
-size = Vector2(1326, 28)
+size = Vector2(1326, 21.825)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0d5q"]
 size = Vector2(22.5, 757)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc50o"]
-size = Vector2(30, 763)
+size = Vector2(24, 736.279)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7vs6"]
-size = Vector2(29, 759)
+size = Vector2(24.7443, 736.79)
 
 [node name="TestSceneJohn" type="Node2D"]
 script = ExtResource("1_g86ge")
@@ -645,7 +645,7 @@ shape = SubResource("RectangleShape2D_3jw41")
 position = Vector2(442, 182)
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Bounds/Upper/Hitbox"]
-position = Vector2(0.5, 3.5)
+position = Vector2(-0.682617, 0.5)
 shape = SubResource("RectangleShape2D_4yk81")
 
 [node name="Lower" type="StaticBody2D" parent="Bounds"]
@@ -659,7 +659,7 @@ shape = SubResource("RectangleShape2D_3jw41")
 position = Vector2(442, 101)
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Bounds/Lower/Hitbox"]
-position = Vector2(-3, -4)
+position = Vector2(-3, -0.912476)
 shape = SubResource("RectangleShape2D_vb47y")
 
 [node name="Right" type="StaticBody2D" parent="Bounds"]
@@ -673,7 +673,7 @@ shape = SubResource("RectangleShape2D_g0d5q")
 position = Vector2(681, 136)
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Bounds/Right/Hitbox"]
-position = Vector2(-5, 8.5)
+position = Vector2(-2, -5.86057)
 shape = SubResource("RectangleShape2D_uc50o")
 
 [node name="Left" type="StaticBody2D" parent="Bounds"]
@@ -687,7 +687,7 @@ shape = SubResource("RectangleShape2D_g0d5q")
 position = Vector2(201, 142)
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Bounds/Left/Hitbox"]
-position = Vector2(4.5, -0.5)
+position = Vector2(2.37215, -11.6051)
 shape = SubResource("RectangleShape2D_f7vs6")
 
 [node name="KingHealthDisplay" parent="." instance=ExtResource("6_by1eb")]
