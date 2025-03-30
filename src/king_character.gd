@@ -41,3 +41,8 @@ func take_damage(damage: int):
 		HEALTH -= damage
 		print("King took damage: ", damage, " HP left: ", HEALTH)
 		LAST_DAMAGE_TIME = cur_time
+
+
+func _on_king_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group(Global.ENEMY_ATTACK_GROUP):
+		SigBus.DamagedKing.emit()
