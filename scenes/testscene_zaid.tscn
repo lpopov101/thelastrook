@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dw57axs3ewcec" path="res://scenes/rook.tscn" id="3_agx8n"]
 [ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="4_7ko7u"]
 [ext_resource type="Script" uid="uid://b326kidl5usfr" path="res://src/input_manager.gd" id="5_kvoes"]
-[ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/pawn_spawn_path.gd" id="6_7ko7u"]
+[ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/enemy_spawn_path.gd" id="6_7ko7u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aw7hs"]
 texture = ExtResource("1_slif8")
