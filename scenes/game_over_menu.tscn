@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2o232aet0mg3"]
+[gd_scene load_steps=4 format=3 uid="uid://2o232aet0mg3"]
 
 [ext_resource type="Script" uid="uid://5io3rm0ge3pw" path="res://src/game_over_menu.gd" id="1_ccgoi"]
 [ext_resource type="StyleBox" uid="uid://cnrtf6vbo512a" path="res://resources/menu_style.tres" id="1_cwb3k"]
+[ext_resource type="StyleBox" uid="uid://q323yqe6difc" path="res://resources/menu_button_normal.tres" id="3_ccgoi"]
 
 [node name="GameOverMenu" type="Control"]
 process_mode = 2
@@ -29,16 +30,24 @@ alignment = 1
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933333, 0.933333, 0.823529, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "Game Over!"
 horizontal_alignment = 1
 
 [node name="NewGameBtn" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_ccgoi")
 text = "New Game"
 
 [node name="ExitToMainBtn" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_ccgoi")
 text = "Exit to Main Menu"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
