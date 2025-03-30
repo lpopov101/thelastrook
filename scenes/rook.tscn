@@ -13,6 +13,7 @@ size = Vector2(79, 78)
 [node name="Rook" type="CharacterBody2D" groups=["playerAttack"]]
 motion_mode = 1
 script = ExtResource("1_ih210")
+cannon_offset = 50
 
 [node name="RookSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_fdtut")
