@@ -1,7 +1,7 @@
 class_name AbilityPowerup extends Area2D
 
 @export var ability: GameManager.Ability = GameManager.Ability.MOAT
-@export var time_to_live_ms = 5000
+var time_to_live_ms = 5000
 
 var spawn_time_ms: int = 0
 var sprites: Array
