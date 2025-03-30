@@ -1,6 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6y4mf5qugen0"]
+[gd_scene load_steps=6 format=3 uid="uid://c6y4mf5qugen0"]
 
 [ext_resource type="Script" uid="uid://bxcq16yquf4sw" path="res://src/king_health_display.gd" id="1_j7huw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0eca"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.933333, 0.933333, 0.886275, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7huw"]
 bg_color = Color(0.321569, 0.321569, 0.321569, 0)
@@ -41,7 +50,9 @@ script = ExtResource("1_j7huw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = -1
-anchor_right = 0.1
+anchor_right = 0.15
+offset_left = 20.0
+offset_top = 20.0
 offset_right = 319.0
 offset_bottom = 40.0
 
@@ -52,6 +63,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0eca")
 text = "King's Health"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/KingHealthHBox"]
@@ -78,6 +90,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0eca")
 text = "Ability"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/AbilityHBox"]
