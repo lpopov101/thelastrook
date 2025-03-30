@@ -17,7 +17,7 @@ class_name powerup_spawner extends Node
 var last_spawn_time_ms: int = 0
 
 func _ready() -> void:
-    last_spawn_time_ms = Time.get_ticks_msec() + time_before_spawn_possible_ms
+    last_spawn_time_ms = Time.get_ticks_msec() + time_before_spawn_possible_ms - try_spawn_interval_ms
     randomize()
 
 func _process(_delta: float) -> void:
