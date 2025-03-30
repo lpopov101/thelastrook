@@ -137,9 +137,6 @@ position = Vector2(-412, 0)
 position = Vector2(202, -39)
 shape = SubResource("RectangleShape2D_g0d5q")
 
-[node name="KingOwen" parent="." instance=ExtResource("5_g0d5q")]
-position = Vector2(306, 193)
-
 [node name="KingHealthDisplay" parent="." instance=ExtResource("6_by1eb")]
 
 [node name="WaveTimer" parent="." instance=ExtResource("7_essfb")]
