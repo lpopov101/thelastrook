@@ -1,5 +1,7 @@
 class_name AbilityPowerup extends Area2D
 
+@onready var pickup_sound: AudioStream = preload("res://assets/powerup_pickup.ogg")
+
 @export var ability: GameManager.Ability = GameManager.Ability.MOAT
 var time_to_live_ms = 5000
 
@@ -25,4 +27,5 @@ func _init() -> void:
 func on_body_entered(_body: Node) -> void:
 	if _body is Rook:
 		Global.game_manager.cur_ability = ability
+		Global.audio_manager.play_sound(pickup_sound, false, 5)
 		queue_free()

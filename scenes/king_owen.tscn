@@ -20,7 +20,7 @@ size = Vector2(33, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvmw8"]
 size = Vector2(26, 38)
 
-[node name="KingOwen" type="CharacterBody2D"]
+[node name="KingOwen" type="CharacterBody2D" groups=["playerAttack"]]
 motion_mode = 1
 script = ExtResource("1_bvmw8")
 
