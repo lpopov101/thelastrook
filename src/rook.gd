@@ -17,6 +17,8 @@ var moat_active = false
 var last_ability_time_ms = -10000
 var cur_move_dir = Vector2.ZERO
 
+@onready var king: KingCharacter = $"../King"
+
 func _ready() -> void:
 	moat_sprite.visible = false
 	moat_collision_shape.disabled = true
@@ -32,6 +34,13 @@ func handle_movement():
 	process_collisions()
 	velocity = cur_move_dir * speed * get_speed_mult()
 	move_and_slide()
+	
+	if Global.input_manager.get_just_pressed_castle():
+		var temp_king = king.global_position
+		var temp_rook = global_position
+		global_position = Vector2(-1000, -1000)
+		king.global_position = temp_rook
+		global_position = temp_king
 
 func update_move_dir(input_move_dir: Vector2):
 	if not is_zero_approx(input_move_dir.y):
