@@ -1,7 +1,12 @@
 class_name Pawn extends CharacterBody2D
 @onready var enemy_defeated_sound: AudioStream = preload("res://assets/enemydefeated.ogg")
 
-@export var speed: float = 100.0 # default
+const PAWN = preload("res://scenes/pawn.tscn")
+@export var speed : float = 100.0 # default
+
+
+static func new_pawn() -> Pawn:
+	return PAWN.instantiate()
 
 # _init runs on instantiation. _ready runs on node addition to tree :)
 func _init():

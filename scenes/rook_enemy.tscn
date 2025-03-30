@@ -11,7 +11,7 @@ height = 44.0
 radius = 8.0
 height = 32.0
 
-[node name="RookEnemy" type="CharacterBody2D"]
+[node name="RookEnemy" type="CharacterBody2D" groups=["enemy", "enemyAttack"]]
 script = ExtResource("1_xfgaw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
