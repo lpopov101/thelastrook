@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dlafkxu8sx7i1" path="res://scenes/king_owen.tscn" id="5_g0d5q"]
 [ext_resource type="PackedScene" uid="uid://c6y4mf5qugen0" path="res://scenes/king_health_display.tscn" id="6_by1eb"]
 [ext_resource type="PackedScene" uid="uid://l41y2ti8u02a" path="res://scenes/wave_timer.tscn" id="7_essfb"]
-[ext_resource type="Script" uid="uid://6swhlbtsoplr" path="res://src/enemy_spawn_path.gd" id="8_r64sa"]
-[ext_resource type="Script" path="res://src/powerup_spawner.gd" id="9_4r2nf"]
+[ext_resource type="Script" path="res://src/enemy_spawn_path.gd" id="8_r64sa"]
+[ext_resource type="Script" uid="uid://uowc8e46r6ui" path="res://src/powerup_spawner.gd" id="9_4r2nf"]
 [ext_resource type="AudioStream" uid="uid://dxqyp8msjgk63" path="res://assets/bbgj8mainthemeloop.ogg" id="9_4yk81"]
 [ext_resource type="Script" uid="uid://b3haw4ya8llsu" path="res://src/audio_manager.gd" id="11_4yk81"]
 
