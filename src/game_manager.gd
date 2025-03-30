@@ -8,9 +8,20 @@ const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 @export var gui: Control
 
 @export_group("Game State")
-@export var wave : int = 0
-@export var king_health : int = 0
-@export var dmg_amt : int = 20
+@export var wave: int = 0
+@export var king_health: int = 0
+@export var dmg_amt: int = 20
+
+enum Ability {MOAT, CANNON, CASTLE, NONE}
+
+var ability_name_map = {
+	Ability.MOAT: "Moat",
+	Ability.CANNON: "Cannon",
+	Ability.CASTLE: "Castle"
+}
+
+@export var cur_ability = Ability.NONE
+var cur_ability_percent = 100.0;
 
 var curr_2d_scene
 var curr_gui_scene
@@ -27,6 +38,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("Escape"):
 		if curr_2d_scene != null and curr_gui_scene == null:
 			pause_game()
+
+func _process(_delta: float) -> void:
+	if Global.input_manager.get_change_ability_cannon():
+		cur_ability = Ability.CANNON
+	elif Global.input_manager.get_change_ability_castle():
+		cur_ability = Ability.CASTLE
+	elif Global.input_manager.get_change_ability_moat():
+		cur_ability = Ability.MOAT
 
 ## creates a new game and loads the scene
 func new_game() -> void:
