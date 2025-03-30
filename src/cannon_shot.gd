@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 
 func on_body_entered(body: Node) -> void:
 	if body is not Rook:
+		Global.audio_manager.play_sound(hit_sound, false, 2)
 		queue_free()
 
 func on_area_entered(area: Area2D) -> void:
