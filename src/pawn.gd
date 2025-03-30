@@ -19,10 +19,10 @@ func set_velocity_with_rotation(rotation: float):
 
 func on_body_entered(body: Node2D):
 	if (body.is_in_group(Global.PLAYER_ATTACK_GROUP)):
-		Global.audio_manager.play_sound(enemy_defeated_sound)
+		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
 
 func on_area_entered(area: Node2D):
 	if (area.is_in_group(Global.PLAYER_ATTACK_GROUP)):
-		Global.audio_manager.play_sound(enemy_defeated_sound)
+		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
