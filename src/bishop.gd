@@ -1,6 +1,8 @@
 class_name Bishop
 extends CharacterBody2D
 
+@onready var enemy_defeated_sound: AudioStream = preload("res://assets/enemydefeated.ogg")
+
 const BISHOP = preload("res://scenes/bishop.tscn")
 @export var speed : float = 200.0 # default
 
@@ -45,10 +47,12 @@ func _update_target(pos : Vector2) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group(Global.PLAYER_ATTACK_GROUP):
+		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
 		
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group(Global.PLAYER_ATTACK_GROUP):
+		Global.audio_manager.play_sound(enemy_defeated_sound, false, 0)
 		queue_free()
 		
