@@ -3,6 +3,8 @@ extends Node2D
 
 const TEST_SCENE = preload("res://scenes/test_scene_john.tscn")
 
+@onready var pawn_promote_sound: AudioStream = preload("res://assets/pawnpromote5.ogg")
+
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var king: KingCharacter = $"King"
 
@@ -85,6 +87,7 @@ func _spawn_piece_at_location(new_piece, spawn_location: PathFollow2D) -> void:
 func _on_pawn_hit_bound(pawn_position: Vector2) -> void:
 	var new_queen = Queen.new_queen()
 	_spawn_piece_at_position(new_queen, pawn_position)
+	Global.audio_manager.play_sound(pawn_promote_sound, false, 0)
 
 static func new_scene() -> JohnTest:
 	var new_s = TEST_SCENE.instantiate()

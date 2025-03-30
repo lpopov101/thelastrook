@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://y6p3x80hjoh2"]
+[gd_scene load_steps=10 format=3 uid="uid://y6p3x80hjoh2"]
 
 [ext_resource type="Script" uid="uid://opbe3xuxpuni" path="res://src/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://ban0lwcifpecn" path="res://assets/chess_board.png" id="2_ekxnf"]
@@ -7,6 +7,9 @@
 [ext_resource type="StyleBox" uid="uid://q323yqe6difc" path="res://resources/menu_button_normal.tres" id="3_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c7mi48u36477g" path="res://assets/King-Gold.png" id="4_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c3k3toksfgeyv" path="res://assets/Queen-Enemy.png" id="5_oa1go"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oa1go"]
+font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
 bg_color = Color(0.462745, 0.588235, 0.337255, 1)
@@ -74,6 +77,15 @@ theme_override_colors/font_focus_color = Color(0.462745, 0.588235, 0.337255, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_rtw2f")
 text = "Exit Game"
+
+[node name="Credits" type="Label" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.933333, 0.933333, 0.823529, 1)
+theme_override_font_sizes/font_size = 48
+text = "Developed by Zaid Alsaigh, John Simmons, Owen Eckart, and Luben Popov"
+label_settings = SubResource("LabelSettings_oa1go")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Rook" type="TextureRect" parent="."]
 layout_mode = 0
