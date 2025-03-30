@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d20c87bw2wd3j"]
+
+[ext_resource type="Texture2D" uid="uid://bco87syuo48lh" path="res://assets/Bishop-Enemy.png" id="1_fqlt4"]
+[ext_resource type="Script" uid="uid://hyoh7ncs3bhk" path="res://src/bishop.gd" id="1_pngg1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pngg1"]
+radius = 15.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4yfa"]
+radius = 11.0
+height = 40.0
+
+[node name="Bishop" type="CharacterBody2D" groups=["enemy", "enemyAttack"]]
+motion_mode = 1
+script = ExtResource("1_pngg1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fqlt4")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_pngg1")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x4yfa")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

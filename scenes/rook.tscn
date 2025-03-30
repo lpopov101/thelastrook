@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw57axs3ewcec"]
+[gd_scene load_steps=7 format=3 uid="uid://dw57axs3ewcec"]
 
 [ext_resource type="Texture2D" uid="uid://ciui6k04jivvk" path="res://assets/Rook.png" id="1_fdtut"]
 [ext_resource type="Script" uid="uid://bhvkg10se4qq2" path="res://src/rook.gd" id="1_ih210"]
@@ -10,9 +10,13 @@ size = Vector2(26, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdqtm"]
 size = Vector2(79, 78)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yy3k"]
+size = Vector2(30, 39)
+
 [node name="Rook" type="CharacterBody2D" groups=["playerAttack"]]
 motion_mode = 1
 script = ExtResource("1_ih210")
+cannon_offset = 50
 
 [node name="RookSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_fdtut")
@@ -27,3 +31,9 @@ texture = ExtResource("3_7yy3k")
 [node name="MoatCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_pdqtm")
+
+[node name="HurtBox" type="Area2D" parent="." groups=["playerAttack"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_7yy3k")

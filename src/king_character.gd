@@ -33,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 func change_direction() -> void:
 	direction = randi() % 8
 	dx = cos(direction * (PI / 4))
-	dy = sin(direction * (PI / 4))
+	dy = sin(direction * (PI / 4)) 
 
 func take_damage(damage: int):
 	var cur_time = Time.get_ticks_msec()
@@ -46,3 +46,7 @@ func take_damage(damage: int):
 func _on_king_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group(Global.ENEMY_ATTACK_GROUP):
 		SigBus.DamagedKing.emit()
+
+
+func _on_position_timer_timeout() -> void:
+	SigBus.KingPosition.emit(position)
