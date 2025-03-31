@@ -4,6 +4,7 @@ extends Node
 const NEW_GAME_SCENE = preload("res://scenes/test_scene_john.tscn")
 
 @onready var king_hit_sound: AudioStream = preload("res://assets/king_hit.ogg")
+@onready var next_wave_sound: AudioStream = preload("res://assets/nextwave.ogg")
 
 @export_group("Scene")
 @export var world_2d: Node2D
@@ -102,6 +103,8 @@ func king_damaged() -> void:
 		
 func update_wave() -> void:
 	wave += 1
+	Global.audio_manager.play_sound(next_wave_sound, false, 4)
+
 		
 func game_over() -> void:
 	print("Game Over")
